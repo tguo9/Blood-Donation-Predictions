@@ -16,4 +16,4 @@ We will perform classification with a decision tree. If we can generate a model 
 ## 5. Suggest how you would share the results of your analysis as one or more tables and/or figures
 - **Table:** By creating a general summary table, as well as two tables filtered for ‘purchased’ and ‘not purchased’ we will be able to find the average of all the features on social network sites, as well as the average of the features that correspond to purchases and not purchased. Since we observed differences between these values, we are able infer that these features likely have an effect on whether items are purchased based on social network adds. 
 - **Figure:** By creating histograms for each feature separated for ‘purchased’ and ‘not purchased’ we will be able to view the distribution of all the values of a given feature, as well as if there are any clear division based on ‘purchased’ or ‘not purchased’ for each feature. 
-We will share the results as tables and figures displayed in our EDA.ipynb file. 
+- We will share the results as tables and figures displayed in our EDA.ipynb file. 

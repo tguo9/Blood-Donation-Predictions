@@ -1,0 +1,4 @@
+altair-data-*.json
+**/.ipynb_checkpoints/
+**/__pycache__/
+.Rhistory

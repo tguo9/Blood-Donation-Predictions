@@ -1,6 +1,6 @@
 # Contribution Guidelines
  
- If you notice a bug, or have a feature request, please open up an issue here. 
+ If you notice a bug, or have a feature request, please open up an issue [here](https://github.com/UBC-MDS/mds522_305/issues). 
  If you'd like to contribute a feature or bug fix, you can fork this repo and submit a pull request. 
  Pull requests will be reviewed within 7 days.
  

@@ -15,10 +15,10 @@ We will perform classification with a decision tree. If we can generate a model 
 
 ## Dependencies
 
-Python 3.7.3 and Python packages:
-        skleanr==0.22.1
-        pandas==0.24.2
-        altair==3.2.0
+Python 3.7.3 and Python packages: </br>
+        skleanr==0.22.1 </br>
+        pandas==0.24.2 </br>
+        altair==3.2.0 </br>
         
 ## References
 

@@ -7,7 +7,7 @@
   
 ## Introduction
 
-The goal of this project is to see whether the features Sex, Age and Income have any effect on whether the product was purchased. This is important information for companies interested in advertising through social networking websites. 
+The goal of this project is to see whether the features Sex, Age and Income have any effect on whether a product was purchased by user on a social network site based on adds shown on that site. This is important information for companies interested in advertising through social networking websites. 
 
 We have chosen a data set which shows whether a product was purchased as a result of adds shown to members of a social networking community. The dataset is sourced from an online course Machine Learning A-Z by Kirill Eremenko and Hadelin de Ponteves, https://www.superdatascience.com/pages/machine-learning. What is important to note about the data is that the product that the advertisement is for is unknown. This means that the goal of working with the data set is to see whether the features Sex, Age and Income have any effect on whether the product was purchased. Therefore if these features have effects on purchasing, we can extrapolate and infer that they likely would have an effect of purchases for other products.
 

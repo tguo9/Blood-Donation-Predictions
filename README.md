@@ -13,12 +13,9 @@ We have chosen a data set which shows whether a product was purchased as a resul
 
 We will perform classification with a decision tree. If we can generate a model with acceptable train and test accuracies based on these features, we will be able to conclude that these features are good predictors and influence purchases based on social network adds. Furthermore, we can then address our predictive sub question for which feature has the greatest influence.
 
-## Data set: https://www.superdatascience.com/pages/machine-learning
-We have chosen a data set which shows whether a product was purchased as a result of adds shown to members of a social networking community. What is important to note about the data is that the product that the advertisement is for is unknown. This means that the goal of working with the data set is to see whether the features Sex, Age and Income have any effect on whether the product was purchased. Therefore if these features have effects on purchasing, we can extrapolate and infer that they likely would have an effect of purchases for other products. 
-
-## Identify a research question:
+## Research question:
 Does gender, salary and/or age influence purchases based on social network adds? 
-- Sub question: which predictor has the greatest impact on purchases made from social network adds?##
+- Sub question: which predictor has the greatest impact on purchases made from social network adds?
 
 ## How will we address the problem and analyze the data? 
 We will perform classification with a decision tree. If we can generate a model with acceptable train and test accuracies based on these features, we will be able to conclude that these features are good predictors and influence purchases based on social network adds. Furthermore, we can then address our predictive sub question for which feature has the greatest influence. 

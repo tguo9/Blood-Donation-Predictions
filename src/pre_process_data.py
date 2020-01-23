@@ -35,6 +35,10 @@ def main(raw_data, local_path):
     blood_df_test = X_test
     blood_df_test = pd.merge(blood_df_test, y_test, left_index=True, right_index=True)
 
+    # rename columns 
+    blood_df_train = blood_df_train.rename(columns={"V1": "since_last_don", "V2": "total_dons", "V3": "total_blood", "V4": "since_first_don"})
+    blood_df_test = blood_df_test.rename(columns={"V1": "since_last_don", "V2": "total_dons", "V3": "total_blood", "V4": "since_first_don"})
+
     #write to csv
     blood_df_train.to_csv("%s/train_data.csv" % local_path)
     blood_df_test.to_csv("%s/test_data.csv" % local_path)

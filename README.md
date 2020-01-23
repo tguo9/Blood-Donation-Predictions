@@ -13,20 +13,13 @@ We have chosen a data set which shows whether a person donated blood on specific
 We will perform classification with a decision tree. If we can generate a model with acceptable train and test accuracies based on these features, we will be able to conclude that these features are good predictors and influence donation based on donation history. Furthermore, we can then address our predictive sub question for which feature has the greatest influence.
 
 
-## Research question:
-Does gender, salary and/or age influence purchases based on social network adds? 
-- Sub question: which predictor has the greatest impact on purchases made from social network adds?
-
-## How will we address the problem and analyze the data? 
-We will perform classification with a decision tree. If we can generate a model with acceptable train and test accuracies based on these features, we will be able to conclude that these features are good predictors and influence purchases based on social network adds. Furthermore, we can then address our predictive sub question for which feature has the greatest influence. 
-
 ## Dependencies
 
 Python 3.7.3 and Python packages: </br>
         sklearn==0.22.1 </br>
         pandas==0.24.2 </br>
         altair==3.2.0 </br>
-
+        
 ## References
 
 Kirill Eremenko and Hadelin de Ponteves, https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center

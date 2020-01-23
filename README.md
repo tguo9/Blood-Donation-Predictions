@@ -23,6 +23,7 @@ To replicate the analysis, clone this GitHub repository, install the dependencie
 
 ```python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv```     
 ```python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed```
+```python src/analysis.py --train_data=./data/processed/train_data.csv  --local_path=./results```
 
 ## Dependencies
 

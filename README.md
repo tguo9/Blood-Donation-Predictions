@@ -21,8 +21,14 @@ For visual EDA we will dreate histograms of each feature with positive and negat
 
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following commands at the command line/terminal from the root directory of this project:
 
-```python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv```     
-```python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed```
+
+```
+# download data     
+python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv
+
+# pre-process data   
+python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed
+```
 
 ## Dependencies
 

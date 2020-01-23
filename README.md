@@ -22,4 +22,4 @@ Python 3.7.3 and Python packages: </br>
         
 ## References
 
-Kirill Eremenko and Hadelin de Ponteves, https://www.superdatascience.com/pages/machine-learning
+Kirill Eremenko and Hadelin de Ponteves, https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center

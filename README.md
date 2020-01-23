@@ -17,14 +17,21 @@ In our EDA .ipynb file we created a summary table of the features, in addition t
 
 For visual EDA we will dreate histograms of each feature with positive and negative target values separated. By creating histograms for each feature separated for ‘donated’ and ‘not donated’ we will be able to view the distribution of all the values of a given feature, as well as if there are any clear division based on ‘donated’ or ‘not donated’ for each feature. 
 
+## Usage
+
+To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following commands at the command line/terminal from the root directory of this project:
+
+```python load_blood_donor_data.py --data_url 'https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path ../data/raw_data.csv``` 
+
 ## Dependencies
 
 Python 3.7.3 and Python packages: </br>
-    \t    sklearn==0.22.1 </br>
-    \t    pandas==0.24.2 </br>
-    \t    altair==3.2.0 </br>
-    \t    datapackage==1.11.0 </br>
-     \t   docopt==0.6.2
+sklearn==0.22.1 </br>
+pandas==0.24.2 </br>
+altair==3.2.0 </br>
+datapackage==1.11.0 </br>
+docopt==0.6.2
         
 ## References
 
+Prof. I-Cheng Yeh. “UCI Machine Learning Repository.” Yeh, I-Cheng, Yang, King-Jang, and Ting, Tao-Ming, "Knowledge discovery on RFM model using Bernoulli sequence," Expert Systems with Applications, 2008 https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center

@@ -12,14 +12,14 @@ Options:
 --local_path=<local_path>  Local path you want the csv file to be written to (include file name)
 """
 
-import datapackage
 import pandas as pd
 from docopt import docopt
+import datapackage
 
 opt = docopt(__doc__)
 
 def main(data_url, local_path):
-    # in console type: python load_blood_donor_data.py --data_url 'https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path ../data/raw_data.csv
+    # in console type: python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv
     
     #data_url = 'https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json'
 

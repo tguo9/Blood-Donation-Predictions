@@ -20,11 +20,11 @@ For visual EDA we will dreate histograms of each feature with positive and negat
 ## Dependencies
 
 Python 3.7.3 and Python packages: </br>
-    /t    sklearn==0.22.1 </br>
-    /t    pandas==0.24.2 </br>
-    /t    altair==3.2.0 </br>
-    /t    datapackage==1.11.0 </br>
-     /t   docopt==0.6.2
+    \t    sklearn==0.22.1 </br>
+    \t    pandas==0.24.2 </br>
+    \t    altair==3.2.0 </br>
+    \t    datapackage==1.11.0 </br>
+     \t   docopt==0.6.2
         
 ## References
 

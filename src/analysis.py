@@ -17,6 +17,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import train_test_split
 from sklearn.utils import resample
+from sklearn.model_selection import GridSearchCV
 
 opt = docopt(__doc__)
 
@@ -36,12 +37,16 @@ def main(train_data, local_path):
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=0.2, random_state = 123)
     
 
-    #fit and predict using decision tree classifer
+    #fit and predict using decision tree classifer and gridCV to find best max_depth hyperparameter
     model = DecisionTreeClassifier()
-    model.fit(X_train, y_train)
-    model_score = pd.DataFrame(cross_val_score(model, X_valid, y_valid, cv=10))
-    model_score.columns=['test_score']
-    model_score['train_score'] = cross_val_score(model, X_train, y_train, cv=10)
+    param_grid = {'max_depth': list(range(2,15))}
+    CV = GridSearchCV(model, param_grid, cv = 10, refit=True)          
+    CV.fit(X_train, y_train)
+    d = {'Best_max_depth':[CV.best_params_['max_depth']], 
+         'Best_CV_Score':[CV.best_score_], 
+         'Training_Error':[1 - CV.score(X_train, y_train)], 
+         'Validation_Error':[1 - CV.score(X_valid, y_valid)]}
+    model_score = pd.DataFrame(d)
 
     #write to csv
     model_score.to_csv("%s/analysis_result.csv" % local_path)

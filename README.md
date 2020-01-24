@@ -30,7 +30,7 @@ python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=.
 ```
 
 ```
-Rscript plot.R ../data/processed/train_data.csv results/
+Rscript src/plot.R --file_path=<file_path> --out_dir=<out_dir>
 ```
 
 ```

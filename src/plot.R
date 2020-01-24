@@ -4,11 +4,11 @@
 "Creates eda plots for the pre-processed training data from the blood donation data (from https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center).
 Saves the plots as png files.
 
-Usage: src/plot.R --file_path=<file_path> --out_dir=<out_dir>
+Usage: Rscript src/plot.R --file_path=<file_path> --out_dir=<out_dir>
 
 Options:
---file_path=<file_path> Path (including filename) to training data (which needs to be saved as a feather file)
---out_dir=<out_dir> Path to directory where the serialized model should be written
+--file_path=<file_path> Path (including filename) to training data
+--out_dir=<out_dir> Path to directory where the eds plots should be written
 " -> doc
 
 library(tidyverse)
@@ -53,7 +53,6 @@ main <- function(file_path, out_dir){
     try({
         dir.create(out_dir)
     })
-    # ggsave(paste0(out_dir, "/kappa_vs_k.png"), width = 5, height = 3)
     ggsave(p1, file=paste(out_dir, 'since_last_don.png', sep = ""))
     ggsave(p2, file=paste(out_dir, 'total_dons.png', sep = ""))
     ggsave(p3, file=paste(out_dir, 'total_blood.png', sep = ""))

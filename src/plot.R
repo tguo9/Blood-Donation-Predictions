@@ -52,13 +52,13 @@ main <- function(file_path, out_dir){
     
     try({
         dir.create(out_dir)
-    }
-
-    ggsave(p1, file=paste(opt$out_dir, 'since_last_don.png', sep = ""))
-    ggsave(p2, file=paste(opt$out_dir, 'total_dons.png', sep = ""))
-    ggsave(p3, file=paste(opt$out_dir, 'total_blood.png', sep = ""))
-    ggsave(p4, file=paste(opt$out_dir, 'since_first_don.png', sep = ""))
+    })
+    # ggsave(paste0(out_dir, "/kappa_vs_k.png"), width = 5, height = 3)
+    ggsave(p1, file=paste(out_dir, 'since_last_don.png', sep = ""))
+    ggsave(p2, file=paste(out_dir, 'total_dons.png', sep = ""))
+    ggsave(p3, file=paste(out_dir, 'total_blood.png', sep = ""))
+    ggsave(p4, file=paste(out_dir, 'since_first_don.png', sep = ""))
 
 }
 
-main(opt$file_path, opt$out_dir)
+main(opt[["--file_path"]], opt[["--out_dir"]])

@@ -16,6 +16,7 @@ from docopt import docopt
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import train_test_split
+from sklearn.utils import resample
 
 opt = docopt(__doc__)
 
@@ -24,6 +25,12 @@ def main(train_data, local_path):
     
     #convert to pandas data frame
     train_df = pd.read_csv(train_data)
+
+    #resample due to unbalanced data set more people not donate
+    donate = train_df[train_df.Class == 2]
+    not_donate = train_df[train_df.Class == 1]
+    not_resample = resample(not_donate, replace = False, n_samples=len(donate), random_state= 100)
+    train_df = pd.concat([donate,not_resample])
     X = train_df.drop(columns='Class')
     y = train_df[['Class']]
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=0.2, random_state = 123)

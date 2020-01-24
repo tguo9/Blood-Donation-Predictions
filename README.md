@@ -21,9 +21,19 @@ For visual EDA we will dreate histograms of each feature with positive and negat
 
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following commands at the command line/terminal from the root directory of this project:
 
-```python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv```     
-```python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed```
-```python src/analysis.py --train_data=./data/processed/train_data.csv  --local_path=./results```
+```
+# download data
+python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv
+
+# pre-process data
+python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed
+
+# create exploratory data analysis figures and write to file 
+Rscript src/plot.R --file_path=<file_path> --out_dir=<out_dir>
+
+# analysis
+python src/analysis.py --train_data=./data/processed/train_data.csv  --local_path=./results
+```
 
 ## Dependencies
 
@@ -32,7 +42,12 @@ sklearn==0.22.1 </br>
 pandas==0.24.2 </br>
 altair==3.2.0 </br>
 datapackage==1.11.0 </br>
-docopt==0.6.2
+docopt==0.6.2 </br>
+requests==2.22.0 </br>
+
+R version 3.6.1 and R packages: </br>
+tidyverse==1.2.1 </br>
+ggplot2==3.2.1 </br>
         
 ## References
 

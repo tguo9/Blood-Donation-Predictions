@@ -42,6 +42,6 @@ def main(raw_data, local_path):
     #write to csv
     blood_df_train.to_csv("%s/train_data.csv" % local_path)
     blood_df_test.to_csv("%s/test_data.csv" % local_path)
-  
+
 if __name__ == "__main__":
     main(opt["--raw_data"], opt["--local_path"])

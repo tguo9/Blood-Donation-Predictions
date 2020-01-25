@@ -202,9 +202,18 @@ Command-Line Interface Description Language.
 <https://github.com/docopt/docopt>. </br></br> R Core Team. 2019. R: A
 Language and Environment for Statistical Computing. Vienna, Austria: R
 Foundation for Statistical Computing. <https://www.R-project.org/>.
-</br></br> Van Rossum, Guido, and Fred L. Drake. 2009. Python 3
-Reference Manual. Scotts Valley, CA: CreateSpace. </br></br> Wickham,
-Hadley. 2017. Tidyverse: Easily Install and Load the ’Tidyverse’.
+</br></br> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V.,
+Thirion, B., Grisel, O., … & Vanderplas, J. (2011). Scikit-learn:
+Machine learning in Python. Journal of machine learning research,
+12(Oct), 2825-2830 </br></br> VanderPlas et al. Altair: Interactive
+Statistical Visualizations for Python. Journal of Open Source Software
+(2018) </br></br> Van Rossum, Guido, and Fred L. Drake. 2009. Python 3
+Reference Manual. Scotts Valley, CA: CreateSpace. </br></br> Wes
+McKinney. Data Structures for Statistical Computing in Python,
+Proceedings of the 9th Python in Science Conference, 51-56 (2010)
+(publisher link) </br></br> Wickham, H. (2016). ggplot2: elegant
+graphics for data analysis. Springer. </br></br> Wickham, Hadley. 2017.
+Tidyverse: Easily Install and Load the ’Tidyverse’.
 <https://CRAN.R-project.org/package=tidyverse>. </br></br> Xie, Yihui.
 2014. “Knitr: A Comprehensive Tool for Reproducible Research in R.” In
 Implementing Reproducible Computational Research, edited by Victoria

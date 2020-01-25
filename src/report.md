@@ -15,12 +15,12 @@ donate blood or not, specifically if they have previously been a donor.
 To try and address this question we explore a dataset provided by
 I-Cheng et al. (2008) which indicates whether an individual donated
 blood or not. Each donor has four characteristics associated with them,
-1) the time in months since their last donation (Recency), 2) the total
-number of times they have donated (Frequency), 3) the total amount of
-blood they have donated in centilitres (Monetary), and 4) the time since
-their first donation in months (Time). We are using this dataset to
-observe whether these features influence whether an individual donated
-blood.
+(1) the time in months since their last donation (Recency), (2) the
+total number of times they have donated (Frequency), (3) the total
+amount of blood they have donated in centilitres (Monetary), and (4) the
+time since their first donation in months (Time). We are using this
+dataset to observe whether these features influence whether an
+individual donated blood.
 
 ## Preliminary EDA
 
@@ -193,8 +193,32 @@ donor.
 
 Armitage, C. J., & Conner, M. (2001). Social cognitive determinants of
 blood donation. Journal of applied social psychology, 31(7), 1431-1457.
+</br></br> de Jonge, Edwin. 2018. Docopt: Command-Line Interface
+Specification Language. <https://CRAN.R-project.org/package=docopt>.
 </br></br> Gillespie, T. W., & Hillyer, C. D. (2002). Blood donors and
 factors impacting the blood donation decision. Transfusion Medicine
-Reviews, 16(2), 115-130. </br></br> Yeh, I. C., Yang, K. J., & Ting, T.
-M. (2009). Knowledge discovery on RFM model using Bernoulli sequence.
-Expert Systems with Applications, 36(3), 5866-5871
+Reviews, 16(2), 115-130. </br></br> Keleshev, Vladimir. 2014. Docopt:
+Command-Line Interface Description Language.
+<https://github.com/docopt/docopt>. </br></br> R Core Team. 2019. R: A
+Language and Environment for Statistical Computing. Vienna, Austria: R
+Foundation for Statistical Computing. <https://www.R-project.org/>.
+</br></br> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V.,
+Thirion, B., Grisel, O., … & Vanderplas, J. (2011). Scikit-learn:
+Machine learning in Python. Journal of machine learning research,
+12(Oct), 2825-2830 </br></br> VanderPlas et al. Altair: Interactive
+Statistical Visualizations for Python. Journal of Open Source Software
+(2018) </br></br> Van Rossum, Guido, and Fred L. Drake. 2009. Python 3
+Reference Manual. Scotts Valley, CA: CreateSpace. </br></br> Wes
+McKinney. Data Structures for Statistical Computing in Python,
+Proceedings of the 9th Python in Science Conference, 51-56 (2010)
+(publisher link) </br></br> Wickham, H. (2016). ggplot2: elegant
+graphics for data analysis. Springer. </br></br> Wickham, Hadley. 2017.
+Tidyverse: Easily Install and Load the ’Tidyverse’.
+<https://CRAN.R-project.org/package=tidyverse>. </br></br> Xie, Yihui.
+2014. “Knitr: A Comprehensive Tool for Reproducible Research in R.” In
+Implementing Reproducible Computational Research, edited by Victoria
+Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC.
+<http://www.crcpress.com/product/isbn/9781466561595>. </br></br> Yeh, I.
+C., Yang, K. J., & Ting, T. M. (2009). Knowledge discovery on RFM model
+using Bernoulli sequence. Expert Systems with Applications, 36(3),
+5866-5871 </br></br>

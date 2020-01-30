@@ -28,8 +28,8 @@ python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learn
 # pre-process data
 python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed
 
-# create exploratory data analysis figures and write to file 
-Rscript src/plot.R --file_path=<file_path> --out_dir=<out_dir>
+# create exploratory data analysis figures and write to file
+Rscript src/plot.R --file_path=data/processed/train_data.csv --out_dir=results/ 
 
 # analysis
 python src/analysis.py --train_data=./data/processed/train_data.csv  --local_path=./results

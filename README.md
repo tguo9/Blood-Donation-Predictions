@@ -21,9 +21,19 @@ For visual EDA we will dreate histograms of each feature with positive and negat
 
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following commands at the command line/terminal from the root directory of this project:
 
-```python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv```     
-```python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed```     
-```python src/analysis.py --train_data=./data/processed/train_data.csv  --local_path=./results```       
+```
+# download data
+python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv
+
+# pre-process data
+python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed
+
+# create exploratory data analysis figures and write to file 
+Rscript src/plot.R --file_path=<file_path> --out_dir=<out_dir>
+
+# analysis
+python src/analysis.py --train_data=./data/processed/train_data.csv  --local_path=./results
+```
 
 ## Dependencies
 
@@ -32,8 +42,38 @@ sklearn==0.22.1 </br>
 pandas==0.24.2 </br>
 altair==3.2.0 </br>
 datapackage==1.11.0 </br>
-docopt==0.6.2
+docopt==0.6.2 </br>
+requests==2.22.0 </br>
+
+R version 3.6.1 and R packages: </br>
+tidyverse==1.2.1 </br>
+ggplot2==3.2.1 </br>
         
 ## References
 
-Prof. I-Cheng Yeh. “UCI Machine Learning Repository.” Yeh, I-Cheng, Yang, King-Jang, and Ting, Tao-Ming, "Knowledge discovery on RFM model using Bernoulli sequence," Expert Systems with Applications, 2008 https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center
+Armitage, C. J., & Conner, M. (2001). Social cognitive determinants of blood donation. Journal of applied social psychology, 31(7), 1431-1457.
+</br></br>
+de Jonge, Edwin. 2018. Docopt: Command-Line Interface Specification Language. https://CRAN.R-project.org/package=docopt.
+</br></br>
+Gillespie, T. W., & Hillyer, C. D. (2002). Blood donors and factors impacting the blood donation decision. Transfusion Medicine Reviews, 16(2), 115-130.
+</br></br>
+Keleshev, Vladimir. 2014. Docopt: Command-Line Interface Description Language. https://github.com/docopt/docopt.
+</br></br>
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... & Vanderplas, J. (2011). Scikit-learn: Machine learning in Python. Journal of machine learning research, 12(Oct), 2825-2830
+</br></br>
+R Core Team. 2019. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.
+</br></br>
+Van Rossum, Guido, and Fred L. Drake. 2009. Python 3 Reference Manual. Scotts Valley, CA: CreateSpace.
+</br></br>
+VanderPlas et al. Altair: Interactive Statistical Visualizations for Python. Journal of Open Source Software (2018)
+</br></br>
+Wes McKinney. Data Structures for Statistical Computing in Python, Proceedings of the 9th Python in Science Conference, 51-56 (2010) (publisher link)
+</br></br>
+Wickham, H. (2016). ggplot2: elegant graphics for data analysis. Springer.
+</br></br>
+Wickham, Hadley. 2017. Tidyverse: Easily Install and Load the ’Tidyverse’. https://CRAN.R-project.org/package=tidyverse.
+</br></br>
+Xie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research in R.” In Implementing Reproducible Computational Research, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC. http://www.crcpress.com/product/isbn/9781466561595.
+</br></br>
+Yeh, I. C., Yang, K. J., & Ting, T. M. (2009). Knowledge discovery on RFM model using Bernoulli sequence. Expert Systems with Applications, 36(3), 5866-5871
+</br></br>

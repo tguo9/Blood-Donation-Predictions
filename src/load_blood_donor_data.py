@@ -15,6 +15,7 @@ Options:
 import pandas as pd
 from docopt import docopt
 import datapackage
+import requests
 
 opt = docopt(__doc__)
 
@@ -22,6 +23,13 @@ def main(data_url, local_path):
     # in console type: python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv
     
     #data_url = 'https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json'
+
+    try: 
+        request = requests.get(data_url)
+        request.status_code == 200
+    except Exception as req:
+        print("Website at the provided url does not exist.")
+        print(req)
 
     # to load Data Package into storage
     package = datapackage.Package(data_url)

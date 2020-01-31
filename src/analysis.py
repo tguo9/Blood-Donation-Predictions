@@ -21,9 +21,11 @@ from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import train_test_split
 from sklearn.utils import resample
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import confusion_matrix 
+from sklearn.metrics import confusion_matrix
+import warnings
 
 opt = docopt(__doc__)
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main(train_data, local_path):
     # in console type: python src/analysis.py --train_data=./data/processed/train_data.csv  --local_path=./results

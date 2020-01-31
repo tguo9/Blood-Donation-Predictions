@@ -1,13 +1,13 @@
 method,Random Forest
-Best_max_depth,[4]
+Best_max_depth,[6]
 Best_min_samples_split,[4]
-Best_CV_Score,[0.7045454545454546]
-Training_Error,[0.19545454545454544]
+Best_CV_Score,[0.6954545454545455]
+Training_Error,[0.13636363636363635]
 Validation_Error,[0.2857142857142857]
 method,Decision Tree
 Best_max_depth,[3]
 Bestmin_samples_split,[2]
-Best_CV_Score,[0.640909090909091]
+Best_CV_Score,[0.6363636363636365]
 Training_Error,[0.2772727272727272]
 Validation_Error,[0.3571428571428571]
 method,Logistic regression

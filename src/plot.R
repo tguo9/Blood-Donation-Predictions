@@ -4,7 +4,7 @@
 "Creates eda plots for the pre-processed training data from the blood donation data (from https://archive.ics.uci.edu/ml/datasets/Blood+Transfusion+Service+Center).
 Saves the plots as png files.
 
-Usage: Rscript src/plot.R --file_path=<file_path> --out_dir=<out_dir>
+Usage: src/plot.R --file_path=<file_path> --out_dir=<out_dir>
 
 Options:
 --file_path=<file_path> Path (including filename) to training data

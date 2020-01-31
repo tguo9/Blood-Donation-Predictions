@@ -16,9 +16,12 @@ data/processed/train_data.csv data/processed/test_data.csv: src/pre_process_data
 results/since_last_don.png results/total_blood.png results/total_dons.png: src/plot.R data/processed/train_data.csv
 	Rscript src/plot.R --file_path=data/processed/train_data.csv --out_dir=results/
 
-# get model on unseen data
+# get model results
 results/analysis_result.csv: src/analysis.py data/processed/train_data.csv
 	python src/analysis.py --train_data=data/processed/train_data.csv --local_path=results
+
+# generate report
+doc/report.md: 
 
 clean: 
 	rm -rf data/raw/*

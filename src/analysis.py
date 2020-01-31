@@ -93,11 +93,16 @@ def main(train_data, local_path):
     y_pred = model_better.predict(X_valid)
     confusion = pd.DataFrame(confusion_matrix(y_valid, y_pred))
 
+    try:
+        #write to csv
+        model_score.to_csv("%s/analysis_result.csv" % local_path)
+        confusion.to_csv("%s/analysis_confusion.csv" % local_path)
+    except:
+        os.makedirs(os.path.dirname(local_path))
+        model_score.to_csv("%s/analysis_result.csv" % local_path)
+        confusion.to_csv("%s/analysis_confusion.csv" % local_path)
 
-
-    #write to csv
-    model_score.to_csv("%s/analysis_result.csv" % local_path)
-    confusion.to_csv("%s/analysis_confusion.csv" % local_path)
+    
     
 if __name__ == "__main__":
     main(opt["--train_data"],opt["--local_path"])

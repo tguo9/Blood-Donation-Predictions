@@ -31,14 +31,6 @@ main <- function(file_path, out_dir){
         scale_fill_discrete(labels = c('Not donated', 'Donated')) +
         ggtitle('Time Since Last Blood Donation Distribution')
 
-    p2 <- data %>% 
-        ggplot() +
-        xlab('Number of Times a Donor Has Previously Donated') +
-        ylab('Number of Donors') +
-        labs(fill= '') +
-        scale_fill_discrete(labels = c('Not donated', 'Donated')) +
-        ggtitle('Total Donation Distribution')
-
     p3 <- data %>% 
         ggplot() +
         geom_bar(aes(total_blood, fill = factor(Class))) +
@@ -61,7 +53,6 @@ main <- function(file_path, out_dir){
         dir.create(out_dir)
     })
     ggsave(p1, file=paste(out_dir, 'since_last_don.png', sep = ""))
-    ggsave(p2, file=paste(out_dir, 'total_dons.png', sep = ""))
     ggsave(p3, file=paste(out_dir, 'total_blood.png', sep = ""))
     ggsave(p4, file=paste(out_dir, 'since_first_don.png', sep = ""))
 

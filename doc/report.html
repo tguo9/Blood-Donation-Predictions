@@ -673,11 +673,11 @@ body {
 <a class="sourceLine" id="cb16-3" data-line-number="3">lgst_rgrsn <span class="op">=</span> results.loc[<span class="dv">15</span>,<span class="st">'Random Forest'</span>]</a>
 <a class="sourceLine" id="cb16-4" data-line-number="4">results</a></code></pre></div>
 <pre><code>##                     method         Random Forest
-## 0           Best_max_depth                   [5]
-## 1   Best_min_samples_split                   [4]
-## 2            Best_CV_Score  [0.6954545454545455]
-## 3           Training_Error  [0.1636363636363637]
-## 4         Validation_Error  [0.2857142857142857]
+## 0           Best_max_depth                   [3]
+## 1   Best_min_samples_split                   [3]
+## 2            Best_CV_Score                 [0.7]
+## 3           Training_Error  [0.2545454545454545]
+## 4         Validation_Error  [0.3571428571428571]
 ## 5                   method         Decision Tree
 ## 6           Best_max_depth                   [3]
 ## 7    Bestmin_samples_split                   [2]
@@ -690,7 +690,7 @@ body {
 ## 14          Training_Error  [0.2727272727272727]
 ## 15        Validation_Error  [0.3214285714285714]
 </code></pre>
-<p>In table 4 we show the results for all three models, including the best hyperparameters and the train and valdation errors. The depending on random influence, either the Random Forest model at [0.2857142857142857] or the Logistic Regression model at [0.3214285714285714] had the best validation error. However, the Logistic Regression model was significantly less overfit than the Random Forest model since the difference between train and validation error was much smaller than the difference in the Random Forest model.</p>
+<p>In table 4 we show the results for all three models, including the best hyperparameters and the train and valdation errors. The depending on random influence, either the Random Forest model at [0.3571428571428571] or the Logistic Regression model at [0.3214285714285714] had the best validation error. However, the Logistic Regression model was significantly less overfit than the Random Forest model since the difference between train and validation error was much smaller than the difference in the Random Forest model.</p>
 <h2 id="discussion">Discussion</h2>
 <p>Based on our results we infer that the features of 1) time since last donation, 2) total number of donations, 3) total blood donated, and 4) the time since the first donation, all combined have some predictive power for whether a patient will donate blood. However, even with training three models, the best train and test accuracy scores were low, with an accuracy score of 0.5 being equivalent to random, the best score of the best model isn’t much better than random in terms of strength of predictive power. If a model was to be used to predict blood donation based on these features we would recommend a logistic regression classifier since the difference between train and validation error is much less than the Random Forest model, and therefore it would be a better model for generalization. However, since the predictive power for these features is so low, regarless of the model, we wouldn’t recommend using these features for predicting blood donation. We would suggest that more reasearch need to be conducted to identify other features may provide better predictions as to whether blood is donated by a past donor.</p>
 <h2 id="conclusion">Conclusion</h2>

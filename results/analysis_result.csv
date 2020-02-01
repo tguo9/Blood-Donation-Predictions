@@ -1,9 +1,9 @@
 method,Random Forest
-Best_max_depth,[5]
-Best_min_samples_split,[4]
-Best_CV_Score,[0.6954545454545455]
-Training_Error,[0.1636363636363637]
-Validation_Error,[0.2857142857142857]
+Best_max_depth,[3]
+Best_min_samples_split,[3]
+Best_CV_Score,[0.7]
+Training_Error,[0.2545454545454545]
+Validation_Error,[0.3571428571428571]
 method,Decision Tree
 Best_max_depth,[3]
 Bestmin_samples_split,[2]

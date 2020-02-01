@@ -166,11 +166,11 @@ results
 ```
 
     ##                     method         Random Forest
-    ## 0           Best_max_depth                   [5]
-    ## 1   Best_min_samples_split                   [4]
-    ## 2            Best_CV_Score  [0.6954545454545455]
-    ## 3           Training_Error  [0.1636363636363637]
-    ## 4         Validation_Error  [0.2857142857142857]
+    ## 0           Best_max_depth                   [3]
+    ## 1   Best_min_samples_split                   [3]
+    ## 2            Best_CV_Score                 [0.7]
+    ## 3           Training_Error  [0.2545454545454545]
+    ## 4         Validation_Error  [0.3571428571428571]
     ## 5                   method         Decision Tree
     ## 6           Best_max_depth                   [3]
     ## 7    Bestmin_samples_split                   [2]
@@ -186,7 +186,7 @@ results
 In table 4 we show the results for all three models, including the best
 hyperparameters and the train and valdation errors. The depending on
 random influence, either the Random Forest model at
-\[0.2857142857142857\] or the Logistic Regression model at
+\[0.3571428571428571\] or the Logistic Regression model at
 \[0.3214285714285714\] had the best validation error. However, the
 Logistic Regression model was significantly less overfit than the Random
 Forest model since the difference between train and validation error was

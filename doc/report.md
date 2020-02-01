@@ -21,7 +21,11 @@ to a need for understanding what motivates individuals to donate blood,
 and whether there are certain factors that effect if someone chooses to
 donate blood or not, specifically if they have previously been a donor.
 To try and address this question we explore a dataset provided by
+<<<<<<< HEAD
 I-Cheng et al. (2008), which indicates whether an individual donated
+=======
+I-Cheng et al. (2008), which indicates whether an individual donated
+>>>>>>> upstream/master
 blood or not. Each donor has four characteristics associated with them,
 (1) the time in months since their last donation (Recency), (2) the
 total number of times they have donated (Frequency), (3) the total
@@ -166,6 +170,7 @@ results
 ```
 
     ##                     method          Random Forest
+<<<<<<< HEAD
     ## 0           Best_max_depth                    [3]
     ## 1   Best_min_samples_split                    [4]
     ## 2            Best_CV_Score   [0.6954545454545454]
@@ -177,6 +182,19 @@ results
     ## 8            Best_CV_Score   [0.6681818181818182]
     ## 9           Training_Error  [0.15000000000000002]
     ## 10        Validation_Error   [0.3928571428571429]
+=======
+    ## 0           Best_max_depth                    [4]
+    ## 1   Best_min_samples_split                    [3]
+    ## 2            Best_CV_Score   [0.7045454545454546]
+    ## 3           Training_Error   [0.1863636363636364]
+    ## 4         Validation_Error   [0.2857142857142857]
+    ## 5                   method          Decision Tree
+    ## 6           Best_max_depth                    [7]
+    ## 7    Bestmin_samples_split                    [4]
+    ## 8            Best_CV_Score   [0.6590909090909091]
+    ## 9           Training_Error  [0.15000000000000002]
+    ## 10        Validation_Error                [0.375]
+>>>>>>> upstream/master
     ## 11                  method    Logistic regression
     ## 12                       C                    [1]
     ## 13           Best_CV_Score   [0.7090909090909091]
@@ -186,7 +204,11 @@ results
 In table 4 we show the results for all three models, including the best
 hyperparameters and the train and valdation errors. The depending on
 random influence, either the Random Forest model at
+<<<<<<< HEAD
 \[0.3392857142857143\] or the Logistic Regression model at
+=======
+\[0.2857142857142857\] or the Logistic Regression model at
+>>>>>>> upstream/master
 \[0.3214285714285714\] had the best validation error. However, the
 Logistic Regression model was significantly less overfit than the Random
 Forest model since the difference between train and validation error was

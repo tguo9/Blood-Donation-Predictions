@@ -19,20 +19,16 @@ For visual EDA we will dreate histograms of each feature with positive and negat
 
 ## Usage
 
-To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following commands at the command line/terminal from the root directory of this project:
+To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line/terminal from the root directory of this project:
 
 ```
-# download data
-python src/load_blood_donor_data.py --data_url='https://datahub.io/machine-learning/blood-transfusion-service-center/datapackage.json' --local_path=./data/raw/raw_data.csv
+make all
+```
 
-# pre-process data
-python src/pre_process_data.py --raw_data=./data/raw/raw_data.csv --local_path=./data/processed
+To clean the repo and reset it to a state with no intermediate files or results run the following command at the command line/terminal from the root directory of this project:
 
-# create exploratory data analysis figures and write to file
-Rscript src/plot.R --file_path=data/processed/train_data.csv --out_dir=results/ 
-
-# analysis
-python src/analysis.py --train_data=./data/processed/train_data.csv  --local_path=./results
+```
+make clean
 ```
 
 ## Dependencies

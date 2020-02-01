@@ -1,22 +1,18 @@
-<<<<<<< HEAD
+
 method,Random Forest
-Best_max_depth,[5]
-Best_min_samples_split,[2]
-Best_CV_Score,[0.6954545454545454]
-Training_Error,[0.15909090909090906]
-Validation_Error,[0.2678571428571429]
+Best_max_depth,[6]
+Best_min_samples_split,[4]
+Best_CV_Score,[0.6954545454545455]
+Training_Error,[0.13636363636363635]
+Validation_Error,[0.2857142857142857]
 method,Decision Tree
-Best_max_depth,[7]
-Bestmin_samples_split,[4]
-Best_CV_Score,[0.6636363636363637]
-Training_Error,[0.15000000000000002]
-Validation_Error,[0.3928571428571429]
+Best_max_depth,[3]
+Bestmin_samples_split,[2]
+Best_CV_Score,[0.6363636363636365]
+Training_Error,[0.2772727272727272]
+Validation_Error,[0.3571428571428571]
 method,Logistic regression
-C,[1]
-Best_CV_Score,[0.7090909090909091]
+C,[0.01]
+Best_CV_Score,[0.7000000000000001]
 Training_Error,[0.2727272727272727]
 Validation_Error,[0.3214285714285714]
-=======
-,Best_max_depth,Best_CV_Score,Training_Error,Validation_Error
-0,3,0.6363636363636365,0.2772727272727272,0.3571428571428571
->>>>>>> upstream/master

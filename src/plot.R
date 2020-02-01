@@ -25,30 +25,37 @@ main <- function(file_path, out_dir){
     p1 <- data %>% 
         ggplot() +
         geom_bar(aes(since_last_don, fill = factor(Class))) +
-        xlab('Since Last Donation') +
+        xlab('Time Since Last Blood Donation (in months)') +
         ylab('Number of Donors') +
-        ggtitle('Donor Since Last Donation Distribution')
+        labs(fill= '') +
+        scale_fill_discrete(labels = c('Not donated', 'Donated')) +
+        ggtitle('Time Since Last Blood Donation Distribution')
 
     p2 <- data %>% 
         ggplot() +
-        geom_bar(aes(total_dons, fill = factor(Class))) +
-        xlab('Total Donation') +
+        xlab('Number of Times a Donor Has Previously Donated') +
         ylab('Number of Donors') +
+        labs(fill= '') +
+        scale_fill_discrete(labels = c('Not donated', 'Donated')) +
         ggtitle('Total Donation Distribution')
 
     p3 <- data %>% 
         ggplot() +
         geom_bar(aes(total_blood, fill = factor(Class))) +
-        xlab('Total Blood Donation') +
+        xlab('Total Blood Donation (in centilitres)') +
         ylab('Number of Donors') +
-        ggtitle('Donor Total Blood Donation Distribution')
+        labs(fill= '') +
+        scale_fill_discrete(labels = c('Not donated', 'Donated')) +
+        ggtitle('Total Blood Donation Distribution')
 
     p4 <- data %>% 
         ggplot() +
         geom_bar(aes(since_first_don, fill = factor(Class))) +
-        xlab('Since First Donation') +
+        xlab('Time Since First Blood Donation (in months)') +
         ylab('Number of Donors') +
-        ggtitle('Donor Since First Donation Distribution')
+        labs(fill= '') +
+        scale_fill_discrete(labels = c('Not donated', 'Donated')) +
+        ggtitle('Time Since First Blood Donation Distribution')
     
     try({
         dir.create(out_dir)

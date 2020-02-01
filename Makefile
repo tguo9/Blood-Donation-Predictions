@@ -2,8 +2,7 @@
 # author: Group 305
 # date: 2020-01-30
 
-all: results/since_last_don.png results/total_blood.png results/total_dons.png results/analysis_result.csv results/analysis_confusion.csv
-# doc/report.md
+all: results/since_last_don.png results/total_blood.png results/total_dons.png results/analysis_result.csv results/analysis_confusion.csv doc/report.md
 
 # download data
 data/raw/raw_data.csv: src/load_blood_donor_data.py
@@ -24,8 +23,12 @@ results/analysis_result.csv results/analysis_confusion.csv: src/analysis.py data
 # generate report
 # doc/report.md: 
 
+doc/report.md doc/report.html: doc/report.Rmd
+	Rscript -e "rmarkdown::render('doc/report.Rmd')"
+
 # clean the result
 clean: 
 	rm -rf data/raw/*
 	rm -rf data/processed/*
 	rm -rf results/*
+	rm -rf doc/report.md

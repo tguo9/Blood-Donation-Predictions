@@ -1,0 +1,17 @@
+method,Random Forest
+Best_max_depth,[5]
+Best_min_samples_split,[4]
+Best_CV_Score,[0.6954545454545455]
+Training_Error,[0.1636363636363637]
+Validation_Error,[0.2857142857142857]
+method,Decision Tree
+Best_max_depth,[3]
+Bestmin_samples_split,[2]
+Best_CV_Score,[0.640909090909091]
+Training_Error,[0.2772727272727272]
+Validation_Error,[0.3571428571428571]
+method,Logistic regression
+C,[0.01]
+Best_CV_Score,[0.7000000000000001]
+Training_Error,[0.2727272727272727]
+Validation_Error,[0.3214285714285714]

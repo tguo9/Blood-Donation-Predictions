@@ -166,17 +166,17 @@ results
 ```
 
     ##                     method          Random Forest
-    ## 0           Best_max_depth                    [3]
-    ## 1   Best_min_samples_split                    [3]
-    ## 2            Best_CV_Score   [0.7045454545454546]
-    ## 3           Training_Error  [0.25909090909090904]
+    ## 0           Best_max_depth                    [4]
+    ## 1   Best_min_samples_split                    [2]
+    ## 2            Best_CV_Score   [0.6954545454545454]
+    ## 3           Training_Error   [0.2090909090909091]
     ## 4         Validation_Error   [0.3035714285714286]
     ## 5                   method          Decision Tree
     ## 6           Best_max_depth                    [7]
-    ## 7    Bestmin_samples_split                    [3]
-    ## 8            Best_CV_Score   [0.6545454545454545]
-    ## 9           Training_Error   [0.1454545454545455]
-    ## 10        Validation_Error   [0.4107142857142857]
+    ## 7    Bestmin_samples_split                    [4]
+    ## 8            Best_CV_Score   [0.6590909090909091]
+    ## 9           Training_Error  [0.15000000000000002]
+    ## 10        Validation_Error   [0.3571428571428571]
     ## 11                  method    Logistic regression
     ## 12                       C                    [1]
     ## 13           Best_CV_Score   [0.7090909090909091]

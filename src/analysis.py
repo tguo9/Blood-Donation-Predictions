@@ -44,7 +44,7 @@ def main(train_data, local_path):
     
 
     #fit and predict using decision tree classifer and gridCV to find best max_depth hyperparameter
-    model = DecisionTreeClassifier()
+    model = DecisionTreeClassifier(random_state= 100)
     param_grid = {'max_depth': list(range(2,15)),'min_samples_split':list(range(2,5))}
     CV = GridSearchCV(model, param_grid, cv = 10, refit=True)          
     CV.fit(X_train, y_train)
@@ -58,7 +58,7 @@ def main(train_data, local_path):
     
     
     # try random forest model
-    forest = RandomForestClassifier(n_estimators =100)
+    forest = RandomForestClassifier(n_estimators =100, random_state=100)
     param_grid_f = {'max_depth': list(range(2,15)),'min_samples_split':list(range(2,5))}
                     #'n_estimators': list(range(80,120))}
 
@@ -75,7 +75,7 @@ def main(train_data, local_path):
 
     
     #try logistic regression
-    model_r = LogisticRegression(solver ='lbfgs')
+    model_r = LogisticRegression(solver ='lbfgs',random_state=100)
     param_grid_r = {'C':[0.001, 0.01, 0.1, 1, 10, 100, 1000]}
     CV_r = GridSearchCV(model_r, param_grid_r, cv = 10, refit=True)          
     CV_r.fit(X_train, y_train['Class'])
@@ -90,7 +90,7 @@ def main(train_data, local_path):
     model_score =  pd.concat([d_2, d_r])
 
     #find out the best one is logistic regression, so we do a confusion matrix
-    model_better = LogisticRegression(solver ='lbfgs', C=CV_r.best_params_['C'])
+    model_better = LogisticRegression(solver ='lbfgs', C=CV_r.best_params_['C'],random_state=100)
     model_better.fit(X_train, y_train['Class'])
     y_pred = model_better.predict(X_valid)
     confusion = pd.DataFrame(confusion_matrix(y_valid, y_pred))

@@ -1,26 +1,25 @@
-# Docker file for data_analysis_pipeline_eg
-# Tiffany Timbers, Jan, 2020
+FROM continuumio/anaconda3
 
-# use rocker/tidyverse as the base image and
-FROM rocker/tidyverse
+# Install R
+RUN apt-get update
+RUN apt-get install r-base r-base-dev -y
 
-# then install the cowsay & here packages
-RUN apt-get update -qq && apt-get -y --no-install-recommends install \
-    && install2.r --error \
-    --deps TRUE \
-    cowsay \
-    here
+RUN conda install pandas
+RUN conda install warnings
+RUN conda install scikit-learn
+RUN conda install numpy
+RUN conda install datapackage
+RUN conda install requests
 
-# install the anaconda distribution of python
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O ~/anaconda.sh && \
-    /bin/bash ~/anaconda.sh -b -p /opt/conda && \
-    rm ~/anaconda.sh && \
-    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc && \
-    find /opt/conda/ -follow -type f -name '*.a' -delete && \
-    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
-    /opt/conda/bin/conda clean -afy
-
-# install docopt python package
 RUN /opt/conda/bin/conda install -y -c anaconda docopt
+
+# Install R Packages
+RUN Rscript -e "install.packages('tidyverse')"
+RUN Rscript -e "install.packages('knitr')"
+RUN Rscript -e "install.packages('docopt')"
+RUN Rscript -e "install.packages('ggplot2')"
+
+# Put Anaconda Python in PATH
+ENV PATH="/opt/conda/bin:${PATH}"
+
+CMD ["/bin/bash"]

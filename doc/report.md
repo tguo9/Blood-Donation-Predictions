@@ -170,28 +170,28 @@ lgst_rgrsn = results.loc[15,'Random Forest']
 results
 ```
 
-    ##                     method         Random Forest
-    ## 0           Best_max_depth                   [3]
-    ## 1   Best_min_samples_split                   [3]
-    ## 2            Best_CV_Score                 [0.7]
-    ## 3           Training_Error  [0.2545454545454545]
-    ## 4         Validation_Error  [0.3571428571428571]
-    ## 5                   method         Decision Tree
-    ## 6           Best_max_depth                   [3]
-    ## 7    Bestmin_samples_split                   [2]
-    ## 8            Best_CV_Score   [0.640909090909091]
-    ## 9           Training_Error  [0.2772727272727272]
-    ## 10        Validation_Error  [0.3571428571428571]
-    ## 11                  method   Logistic regression
-    ## 12                       C                [0.01]
-    ## 13           Best_CV_Score  [0.7000000000000001]
-    ## 14          Training_Error  [0.2727272727272727]
-    ## 15        Validation_Error  [0.3214285714285714]
+    ##                     method          Random Forest
+    ## 0           Best_max_depth                    [3]
+    ## 1   Best_min_samples_split                    [3]
+    ## 2            Best_CV_Score   [0.7045454545454546]
+    ## 3           Training_Error  [0.25909090909090904]
+    ## 4         Validation_Error   [0.3035714285714286]
+    ## 5                   method          Decision Tree
+    ## 6           Best_max_depth                    [7]
+    ## 7    Bestmin_samples_split                    [3]
+    ## 8            Best_CV_Score   [0.6545454545454545]
+    ## 9           Training_Error   [0.1454545454545455]
+    ## 10        Validation_Error   [0.4107142857142857]
+    ## 11                  method    Logistic regression
+    ## 12                       C                    [1]
+    ## 13           Best_CV_Score   [0.7090909090909091]
+    ## 14          Training_Error   [0.2727272727272727]
+    ## 15        Validation_Error   [0.3214285714285714]
 
 In table 4 we show the results for all three models, including the best
 hyperparameters and the train and valdation errors. The depending on
 random influence, either the Random Forest model at
-\[0.3571428571428571\] or the Logistic Regression model at
+\[0.3035714285714286\] or the Logistic Regression model at
 \[0.3214285714285714\] had the best validation error. However, the
 Logistic Regression model was significantly less overfit than the Random
 Forest model since the difference between train and validation error was

@@ -13,18 +13,26 @@ Training_Error,[0.15000000000000002]
 =======
 Best_max_depth,[3]
 Best_min_samples_split,[3]
-Best_CV_Score,[0.7]
-Training_Error,[0.2545454545454545]
-Validation_Error,[0.3571428571428571]
+Best_CV_Score,[0.7045454545454546]
+Training_Error,[0.25909090909090904]
+Validation_Error,[0.3035714285714286]
 method,Decision Tree
+<<<<<<< HEAD
 Best_max_depth,[3]
 Bestmin_samples_split,[2]
 Best_CV_Score,[0.640909090909091]
 Training_Error,[0.2772727272727272]
 >>>>>>> upstream/master
 Validation_Error,[0.3571428571428571]
+=======
+Best_max_depth,[7]
+Bestmin_samples_split,[3]
+Best_CV_Score,[0.6545454545454545]
+Training_Error,[0.1454545454545455]
+Validation_Error,[0.4107142857142857]
+>>>>>>> upstream/master
 method,Logistic regression
-C,[0.01]
-Best_CV_Score,[0.7000000000000001]
+C,[1]
+Best_CV_Score,[0.7090909090909091]
 Training_Error,[0.2727272727272727]
 Validation_Error,[0.3214285714285714]

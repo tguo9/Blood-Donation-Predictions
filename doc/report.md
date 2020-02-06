@@ -3,6 +3,14 @@ Blood Donation Predictors Report
 Group 305
 24/01/2020
 
+``` r
+library(rmarkdown)
+library(markdown)
+library(knitr)
+library(reticulate)
+os <- import("os")
+```
+
 ## Introduction
 
 Blood donations are a vital component of saving lives, and there is an
@@ -13,7 +21,7 @@ to a need for understanding what motivates individuals to donate blood,
 and whether there are certain factors that effect if someone chooses to
 donate blood or not, specifically if they have previously been a donor.
 To try and address this question we explore a dataset provided by
-I-Cheng et al. (2008) which indicates whether an individual donated
+I-Cheng et al. (2008), which indicates whether an individual donated
 blood or not. Each donor has four characteristics associated with them,
 (1) the time in months since their last donation (Recency), (2) the
 total number of times they have donated (Frequency), (3) the total
@@ -32,11 +40,11 @@ Table 1, we determined that there were 598 observation in our train
 dataset. We separated our data into two additional tables based on the
 target class, Table 2 for only those that did not donate, and Table 3
 which was only cases where there was a donation. Based on this
-separating we saw our data was imbalanced. Class 1 representing those
+separation we saw our data was imbalanced. Class 1 representing those
 candidates who did not donate, had 460 observations, versus class 2 with
 138 individuals who did donate. We also noted from Table 1 that almost
 all features had a high variance, which indicated to us that these may
-not exceptionally predictive.
+not be exceptionally predictive.
 
 ``` python
 import pandas as pd
@@ -100,17 +108,20 @@ blood_df_train[blood_df_train['Class']==2].describe()
     ## 75%          4.000000   10.000000   2500.000000        41.750000    2.0
     ## max         26.000000   50.000000  12500.000000        98.000000    2.0
 
-In addition to the tables we also created visualization to help us
+In addition to the tables we also created visualizations to help us
 understand the distribution of the data. Though not included in this
 report, in the EDA.ipynb file we looked at all observations together,
-regardless of whether the observation indicated donated or not donated,
-through our plots observed that almost all features had an exponential
-distribution. This carried through to figures 1, 2, 3 and 4 seen below
-where we chose to separate the features based on class. Both classes had
-an exponential distribution and followed the same trend. This indicated
-that these features may not be particularity strong in binary
-classification, even though the data represented a binary classification
-problem.
+regardless of whether the observation indicated donated or not donated.
+Through our plots we observed that almost all features had an
+exponential distribution. This carried through to figures 1, 2, and 3
+seen below where we chose to separate features based on class. The only
+feature we did not create a figure for was total donations. This is
+because total blood donations and total amount of blood donated had
+almost identical results graphically. For all features plotted, both
+classes had an exponential distribution and followed the same trend.
+This indicated that these features may not be particularity strong in
+binary classification, even though the data represented a binary
+classification problem.
 
 ### Figure 1.
 
@@ -124,31 +135,22 @@ problem.
 
 ![](../results/total_blood.png)
 
-### Figure 4.
-
-![](../results/total_dons.png)
-
 ## Methods
 
-We implemented a decision tree model from Scikit Learn to follow through
-on our observations from the EDA and address our research question. We
-chose a decision tree since it is suited to binary classification and is
-easily interpretable. Prior to implementing the model, we cleaned and
-processed the data to ensure there were no missing or erroneous values.
-We then selected a random subset of the class 1 portion of the training
-data to address the training imbalance, so our model was trained on a
-dataset that had a 50% split of classes. Once this was completed, we
-created a decision tree model and performed a GridCV search to tune for
-the best maximum depth hyperparameter with 10-fold cross validation to
-fit and train the model.
+To address our research question of whether our features could be used
+as predictors for blood donation we decided to create and test three
+models that are all designed to perform well in binary classification
+problems. The three models were a Random Forest classifier, a Decision
+Tree and a Logistic Regression Classifier. Prior to implementing the
+models, we cleaned and processed the data to ensure there were no
+missing or erroneous values. We then selected a random subset of the
+class 1 portion of the training data to address the training imbalance,
+so our model was trained on a dataset that had a 50% split of classes.
+Once this was completed, we created mutliple models and performed a
+GridCV search to tune for the best hyperparameters of each model with
+10-fold cross validation to fit and train the model.
 
 ## Results
-
-As shown in Table 4., with our GridCV search we were able to determine
-that the best `max_depth` setting was 7. With that value we got a CV
-accuracy score of 0.65, with a training error of 0.14 and a validation
-error of
-0.35.
 
 ``` python
 print('Table 4:')
@@ -157,22 +159,56 @@ print('Table 4:')
     ## Table 4:
 
 ``` python
-pd.read_csv('../results/analysis_result.csv').drop('Unnamed: 0', axis = 1)
+results = pd.read_csv('../results/analysis_result.csv')
+rndm_frst = results.loc[4,'Random Forest']
+lgst_rgrsn = results.loc[15,'Random Forest']
+results
 ```
 
-    ##    Best_max_depth  Best_CV_Score  Training_Error  Validation_Error
-    ## 0               7           0.65        0.140909          0.357143
+    ##                     method          Random Forest
+    ## 0           Best_max_depth                    [3]
+    ## 1   Best_min_samples_split                    [3]
+    ## 2            Best_CV_Score   [0.7045454545454546]
+    ## 3           Training_Error  [0.25909090909090904]
+    ## 4         Validation_Error   [0.3035714285714286]
+    ## 5                   method          Decision Tree
+    ## 6           Best_max_depth                    [7]
+    ## 7    Bestmin_samples_split                    [3]
+    ## 8            Best_CV_Score   [0.6545454545454545]
+    ## 9           Training_Error   [0.1454545454545455]
+    ## 10        Validation_Error   [0.4107142857142857]
+    ## 11                  method    Logistic regression
+    ## 12                       C                    [1]
+    ## 13           Best_CV_Score   [0.7090909090909091]
+    ## 14          Training_Error   [0.2727272727272727]
+    ## 15        Validation_Error   [0.3214285714285714]
+
+In table 4 we show the results for all three models, including the best
+hyperparameters and the train and valdation errors. The depending on
+random influence, either the Random Forest model at
+\[0.3035714285714286\] or the Logistic Regression model at
+\[0.3214285714285714\] had the best validation error. However, the
+Logistic Regression model was significantly less overfit than the Random
+Forest model since the difference between train and validation error was
+much smaller than the difference in the Random Forest model.
 
 ## Discussion
 
 Based on our results we infer that the features of 1) time since last
 donation, 2) total number of donations, 3) total blood donated, and 4)
 the time since the first donation, all combined have some predictive
-power for whether a patient will donate blood. However, since our
-accuracy and cross validation scores were low, the combined predictive
-power of these features is quite low. Since the predictive power is so
-low, we wouldn’t recommend this model as a predictive tool for
-predicting blood donation. We would suggest that other factors may
+power for whether a patient will donate blood. However, even with
+training three models, the best train and test accuracy scores were low,
+with an accuracy score of 0.5 being equivalent to random, the best score
+of the best model isn’t much better than random in terms of strength of
+predictive power. If a model was to be used to predict blood donation
+based on these features we would recommend a logistic regression
+classifier since the difference between train and validation error is
+much less than the Random Forest model, and therefore it would be a
+better model for generalization. However, since the predictive power for
+these features is so low, regarless of the model, we wouldn’t recommend
+using these features for predicting blood donation. We would suggest
+that more reasearch need to be conducted to identify other features may
 provide better predictions as to whether blood is donated by a past
 donor.
 
@@ -184,10 +220,10 @@ the time since the first donation, all combined have some predictive
 power for whether a patient will donate blood. However, since our
 accuracy and cross validation scores were low, the combined predictive
 power of these features is quite low. Since the predictive power is so
-low, we wouldn’t recommend this model as a predictive tool for
-predicting blood donation. We would suggest that other factors may
-provide better predictions as to whether blood is donated by a past
-donor.
+low, we suggest that these features don’t have a strong influence on
+whether a patient donates blood or not. We would suggest that other
+factors may provide better predictions as to whether blood is donated by
+a past donor.
 
 ## References
 

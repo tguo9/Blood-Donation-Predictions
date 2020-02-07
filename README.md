@@ -19,6 +19,26 @@ For visual EDA we will dreate histograms of each feature with positive and negat
 
 ## Usage
 
+#### 1\. Using Docker
+
+*note - the instructions in this section also depends on running this in
+a unix shell (e.g., terminal or Git Bash)*
+
+To replicate the analysis, install
+[Docker](https://www.docker.com/get-started). Then clone this GitHub
+repository and run the following command at the command line/terminal
+from the root directory of this project:
+
+    docker run --rm -v $(pwd):/home/mds522_305 tguo3/mds make -C '/home/mds522_305' all
+
+To reset the repo to a clean state, with no intermediate or results
+files, run the following command at the command line/terminal from the
+root directory of this project:
+
+    docker run --rm -v $(pwd):/home/mds522_305 tguo3/mds make -C '/home/mds522_305' clean
+
+#### 2\. Without using Docker
+
 To replicate the analysis, clone this GitHub repository, install the dependencies listed below, and run the following command at the command line/terminal from the root directory of this project:
 
 ```

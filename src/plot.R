@@ -22,32 +22,39 @@ main <- function(file_path, out_dir){
     # read in data
     data <- read.csv(file_path)
     
-    p1 <- data %>% 
-        ggplot() +
-        geom_bar(aes(since_last_don, fill = factor(Class))) +
+    #set plot size
+    options(repr.plot.width = 6, repr.plot.height = 4)
+    
+    p1 <- data %>%
+        ggplot(aes(x=since_last_don)) +
+        geom_density(aes(fill=factor(Class)), alpha = 0.4) +
+        scale_x_continuous(limits=c(0, 30)) +
         xlab('Time Since Last Blood Donation (in months)') +
-        ylab('Number of Donors') +
+        ylab('Density') +
         labs(fill= '') +
-        scale_fill_discrete(labels = c('Not donated', 'Donated')) +
-        ggtitle('Time Since Last Blood Donation Distribution')
+        scale_fill_discrete(labels = c('Did not donate', 'Donated')) +
+        ggtitle('Time Since Last Blood Donation Distribution') +
+        theme_bw()
 
-    p3 <- data %>% 
-        ggplot() +
-        geom_bar(aes(total_blood, fill = factor(Class))) +
+    p3 <- data %>%
+        ggplot(aes(x=total_blood)) +
+        geom_density(aes(fill=factor(Class)), alpha = 0.4) +
         xlab('Total Blood Donation (in centilitres)') +
-        ylab('Number of Donors') +
+        ylab('Density') +
         labs(fill= '') +
-        scale_fill_discrete(labels = c('Not donated', 'Donated')) +
-        ggtitle('Total Blood Donation Distribution')
+        scale_fill_discrete(labels = c('Did not donate', 'Donated')) +
+        ggtitle('Total Blood Donation Distribution') +
+        theme_bw()
 
-    p4 <- data %>% 
-        ggplot() +
-        geom_bar(aes(since_first_don, fill = factor(Class))) +
+    p4 <- data %>%
+        ggplot(aes(x=since_first_don)) +
+        geom_density(aes(fill=factor(Class)), alpha = 0.4) + 
         xlab('Time Since First Blood Donation (in months)') +
-        ylab('Number of Donors') +
+        ylab('Density') +
         labs(fill= '') +
-        scale_fill_discrete(labels = c('Not donated', 'Donated')) +
-        ggtitle('Time Since First Blood Donation Distribution')
+        scale_fill_discrete(labels = c('Did not donate', 'Donated')) +
+        ggtitle('Time Since First Blood Donation Distribution') +
+        theme_bw()
     
     try({
         dir.create(out_dir)

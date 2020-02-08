@@ -7,9 +7,9 @@
   
 ## Introduction
 
-We have attempted to build a classification model to determine a person donated blood on specific date as a result of their past donation history. The goal of working with the data set is to see whether the features Recency(last donation month), Frequency(total number of donation) and Monetary(total blood donated) have any effect on whether the blood was donated on a given date. Therefore if these features have effects on donation, we can extrapolate and infer that they likely would have an effect on future donation.
+We have attempted to build a classification model to determine if a person donated blood on specific date as a result of their past donation history. The goal of working with the data set is to see whether the features Recency(last donation month), Frequency(total number of donation) and Monetary(total blood donated) have any effect on whether the blood was donated on a given date. Therefore if these features have effects on donation, we can extrapolate and infer that they likely would have an effect on future donation.
 
-The question that we aimed to answer is: Do Recency(last donation month), Frequency(total number of donation) and Monetary(total blood donated) have any effect on whether the blood was donated on a specific date? 
+The question that we aimed to answer was: Do Recency(last donation month), Frequency(total number of donation) and Monetary(total blood donated) have any effect on whether the blood was donated on a specific date? 
 
 We preformed classification with three different models: Decision Tree, Random Forest and Logistic Regression. Our best validation results were obtained from the Random Forest model with a 0.30 error, however, our Logistic regression model had a much smaller difference between train and validation errors, with a validation error of 0.32. Since our errors were so high, we would not recommend using a model based on these features to predict blood donation from past donors. However, if it is necessary we would recommend the Logistic Regression classifier since the smaller difference between train and validation error would imply it is better for generalizing to new data. 
 

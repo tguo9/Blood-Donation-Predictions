@@ -17,6 +17,10 @@ In our EDA .ipynb file we created a summary table of the features, in addition t
 
 For visual EDA we will dreate histograms of each feature with positive and negative target values separated. By creating histograms for each feature separated for ‘donated’ and ‘not donated’ we will be able to view the distribution of all the values of a given feature, as well as if there are any clear division based on ‘donated’ or ‘not donated’ for each feature. 
 
+## Dependency Diagram
+
+![](Makefile.png)
+
 ## Usage
 
 #### 1\. Using Docker

@@ -1,7 +1,7 @@
 Blood Donation Predictors Report
 ================
 Group 305
-24/01/2020
+2020-02-08
 
 ``` r
 library(reticulate)
@@ -25,24 +25,24 @@ blood or not. Each donor has four characteristics associated with them,
 total number of times they have donated (Frequency), (3) the total
 amount of blood they have donated in centilitres (Monetary), and (4) the
 time since their first donation in months (Time). We are using this
-dataset to observe whether these features influence whether an
-individual donated blood.
+dataset to observe if these features influence whether an individual
+donated blood.
 
 ## Preliminary EDA
 
 Before creating any models or statistical tests we conducted a
-preliminary exploratory data analysis to provide insights into how or
+preliminary exploratory data analysis to provide insights into how our
 model would perform. Prior to the EDA we split our data into train and
-test sets, and the used the train set to derive information. As shown in
-Table 1, we determined that there were 598 observation in our train
+test sets, and then used the train set to derive information. As shown
+in Table 1, we determined that there were 598 observation in our train
 dataset. We separated our data into two additional tables based on the
 target class, Table 2 for only those that did not donate, and Table 3
-which was only cases where there was a donation. Based on this
-separation we saw our data was imbalanced. Class 1 representing those
-candidates who did not donate, had 460 observations, versus class 2 with
-138 individuals who did donate. We also noted from Table 1 that almost
-all features had a high variance, which indicated to us that these may
-not be exceptionally predictive.
+for only donors. Based on this separation we saw our data was
+imbalanced. Class 1 representing those candidates who did not donate,
+had 460 observations, versus class 2 with 138 individuals who did
+donate. We also noted from Table 1 that almost all features had a high
+variance, which indicated to us that these may not be exceptionally
+predictive.
 
 ``` python
 import pandas as pd
@@ -1203,21 +1203,22 @@ understand the distribution of the data. Though not included in this
 report, in the EDA.ipynb file we looked at all observations together,
 regardless of whether the observation indicated donated or not donated.
 Through our plots we observed that almost all features had an
-exponential distribution. This carried through to figures 1, 2, and 3
-seen below where we chose to separate features based on class. The only
-feature we did not create a figure for was total donations. This is
-because total blood donations and total amount of blood donated had
-almost identical results graphically. Figure 1 shows that the density of
-the time since the first blood donation for both individuals that
-donated and did not donate was very similar. Based on this observation
-it is likley that time since first donation wouldn’t be a strong
-differentiating feature. In constrast, figure 2 showed that the time
-since the last donation could be a decent predictor, since the number of
-individuals who ended up donating had often donated quite recently,
-indicating they are probably a frequent donor. Figure 3 indicated that
-there is likley a small predictive power for total blood donation, since
-those individuals that had not donated recently had actually donated
-more blood in general.
+exponential distribution. In figures 1, 2, and 3 seen below where we
+chose to separate features based on class and instead of a bar based
+histograms from our initial EDA, we plotted density. The only feature we
+did not create a figure for was total donations. This is because total
+blood donations and total amount of blood donated had almost identical
+results graphically. Figure 1 shows that the density of the time since
+the first blood donation for both individuals that donated and did not
+donate was very similar. Based on this observation it is likley that
+time since first donation wouldn’t be a strong differentiating feature.
+In constrast, figure 2 showed that the time since the last donation
+could be a decent predictor, since the number of individuals who ended
+up donating had often donated quite recently, indicating they are
+probably a frequent donor. Figure 3 indicated that there is likley a
+small predictive power for total blood donation, since those individuals
+that had not donated recently had actually donated more blood in
+general.
 
 |              Figure 1               |              Figure 2              | Figure 3                        |
 | :---------------------------------: | :--------------------------------: | :------------------------------ |
@@ -1560,10 +1561,10 @@ Validation\_Error
 
 In table 4 we show the results for all three models, including the best
 hyperparameters and the train and validation errors. With our random
-seed, either the Random Forest model at \[0.3035714285714286\] had a
-better validation error than the Logistic Regression model at
+seed, the Random Forest model at \[0.3035714285714286\] had a better
+validation error than the Logistic Regression model at
 \[0.3214285714285714\]. However, the Logistic Regression model was
-significantly less overfit than the Random Forest model since the
+significantly less overfit than the Random Forest model, since the
 difference between train and validation error was much smaller than the
 difference in the Random Forest model.
 
@@ -1585,8 +1586,8 @@ validation error is much less than the Random Forest model, and
 therefore it would be a better model for generalization. However, since
 the predictive power for these features is so low, regarless of the
 model, we wouldn’t recommend using these features for predicting blood
-donation. We would suggest that more reasearch need to be conducted to
-identify other features may provide better predictions as to whether
+donation. We would suggest that more reasearch needs to be conducted to
+identify other features that may provide better predictions for whether
 blood is donated by a past donor.
 
 ## Conclusion

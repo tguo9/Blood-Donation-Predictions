@@ -24,6 +24,7 @@ RUN Rscript -e "install.packages('knitr')"
 RUN Rscript -e "install.packages('docopt')"
 RUN Rscript -e "install.packages('ggplot2')"
 RUN Rscript -e "install.packages('reticulate')"
+RUN Rscript -e "install.packages('kableExtra')"
 
 # Put Anaconda Python in PATH
 ENV PATH="/opt/conda/bin:${PATH}"

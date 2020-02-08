@@ -70,6 +70,7 @@ requests==2.22.0 </br>
 R version 3.6.1 and R packages: </br>
 tidyverse==1.2.1 </br>
 ggplot2==3.2.1 </br>
+kableExtra==1.1.0</br>
         
 ## References
 

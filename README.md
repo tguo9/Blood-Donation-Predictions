@@ -71,6 +71,13 @@ R version 3.6.1 and R packages: </br>
 tidyverse==1.2.1 </br>
 ggplot2==3.2.1 </br>
 kableExtra==1.1.0</br>
+
+## Peer Review Issues
+
+[Peer Review 1](https://github.com/UBC-MDS/mds522_305/issues/33) </br>
+[Peer Review 2](https://github.com/UBC-MDS/mds522_305/issues/34) </br>
+[Peer Review 3](https://github.com/UBC-MDS/mds522_305/issues/35) </br>
+[Aggregated Feedback](https://github.com/UBC-MDS/mds522_305/issues/36) </br>
         
 ## References
 

@@ -1,3 +1,7 @@
+# Docker file for the group 305 project
+# Group 305, Jan, 2020
+
+# use continuumio/anaconda3 as the base image and
 FROM continuumio/anaconda3
 
 # Install R
@@ -6,6 +10,7 @@ RUN apt-get install libcurl4-openssl-dev -y
 RUN apt-get install libssl-dev -y
 RUN apt-get install r-base r-base-dev -y
 
+# Install the python packages
 RUN conda install pandas
 RUN conda install scikit-learn
 RUN conda install numpy

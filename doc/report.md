@@ -19,7 +19,7 @@ to a need for understanding what motivates individuals to donate blood,
 and whether there are certain factors that effect if someone chooses to
 donate blood or not, specifically if they have previously been a donor.
 To try and address this question we explore a dataset provided by
-I-Cheng et al. (2008), which indicates whether an individual donated
+I-Cheng et al. (2008), which indicates whether an individual donated
 blood or not. Each donor has four characteristics associated with them,
 (1) the time in months since their last donation (Recency), (2) the
 total number of times they have donated (Frequency), (3) the total
@@ -1237,7 +1237,8 @@ class 1 portion of the training data to address the training imbalance,
 so our model was trained on a dataset that had a 50% split of classes.
 Once this was completed, we created mutliple models and performed a
 GridCV search to tune for the best hyperparameters of each model with
-10-fold cross validation to fit and train the model.
+10-fold cross validation to fit and train the
+model.
 
 ## Results
 

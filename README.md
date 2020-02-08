@@ -7,15 +7,17 @@
   
 ## Introduction
 
-We have chosen a data set that indicates whether a person donated blood on specific date as a result of their past donation history. The goal of working with the data set is to see whether the features Recency(last donation month), Frequency(total number of donation) and Monetary(total blood donated) have any effect on whether the blood was donated on a given date. Therefore if these features have effects on donation, we can extrapolate and infer that they likely would have an effect on future donation.
+We have attempted to build a classification model to determine a person donated blood on specific date as a result of their past donation history. The goal of working with the data set is to see whether the features Recency(last donation month), Frequency(total number of donation) and Monetary(total blood donated) have any effect on whether the blood was donated on a given date. Therefore if these features have effects on donation, we can extrapolate and infer that they likely would have an effect on future donation.
 
-The question that we aim to answer is: Do Recency(last donation month), Frequency(total number of donation) and Monetary(total blood donated) have any effect on whether the blood was donated on a specific date? With the sub-question of: which predictor has the greatest impact on donation?
+The question that we aimed to answer is: Do Recency(last donation month), Frequency(total number of donation) and Monetary(total blood donated) have any effect on whether the blood was donated on a specific date? 
 
-We will perform classification with a decision tree. If we can generate a model with acceptable train and test accuracies based on these features, we will be able to conclude that these features are good predictors and influence donation based on donation history. Furthermore, we can then address our predictive sub question for which feature has the greatest influence.
+We preformed classification with three different models: Decision Tree, Random Forest and Logistic Regression. Our best validation results were obtained from the Random Forest model with a 0.30 error, however, our Logistic regression model had a much smaller difference between train and validation errors, with a validation error of 0.32. Since our errors were so high, we would not recommend using a model based on these features to predict blood donation from past donors. However, if it is necessary we would recommend the Logistic Regression classifier since the smaller difference between train and validation error would imply it is better for generalizing to new data. 
 
-In our EDA .ipynb file we created a summary table of the features, in addition to two other tables separated by positive and negative target values, to find the averages of the features associated with positive and negative results (donated and not donated). By creating a general summary table, as well as two tables filtered for ‘donated’ and ‘not donated’ we will be able to find the average of all the features with regards to donation history, as well as the average of the features that correspond to donated and not donated. Since we observed differences between these values, we are able infer that these features likely have an effect on whether blood will be donated based on donation history. 
+Based on our results we infer that the features of 1) time since last donation, 2) total number of donations, 3) total blood donated, and 4) the time since the first donation, all combined have some predictive power for whether a patient will donate blood. However, since our accuracy and cross validation scores were low, the combined predictive power of these features is low. Since the predictive power is so low, we suggest that these features don’t have a strong influence on whether a patient donates blood or not. We would suggest that other factors may provide better predictions as to whether blood is donated by a past donor.
 
-For visual EDA we will dreate histograms of each feature with positive and negative target values separated. By creating histograms for each feature separated for ‘donated’ and ‘not donated’ we will be able to view the distribution of all the values of a given feature, as well as if there are any clear division based on ‘donated’ or ‘not donated’ for each feature. 
+## Report
+
+The final report can be found [here](/doc/report.md)
 
 ## Dependency Diagram
 

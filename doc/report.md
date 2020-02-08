@@ -4,11 +4,9 @@ Group 305
 24/01/2020
 
 ``` r
-library(rmarkdown)
-library(markdown)
-library(knitr)
 library(reticulate)
 os <- import("os")
+library(kableExtra)
 ```
 
 ## Introduction
@@ -21,7 +19,7 @@ to a need for understanding what motivates individuals to donate blood,
 and whether there are certain factors that effect if someone chooses to
 donate blood or not, specifically if they have previously been a donor.
 To try and address this question we explore a dataset provided by
-I-Cheng et al. (2008), which indicates whether an individual donated
+I-Cheng et al. (2008), which indicates whether an individual donated
 blood or not. Each donor has four characteristics associated with them,
 (1) the time in months since their last donation (Recency), (2) the
 total number of times they have donated (Frequency), (3) the total
@@ -49,64 +47,1156 @@ not be exceptionally predictive.
 ``` python
 import pandas as pd
 blood_df_train = pd.read_csv('../data/processed/train_data.csv').drop('Unnamed: 0', axis = 1)
+table_1 = blood_df_train.describe()
+table_2 = blood_df_train[blood_df_train['Class']==1].describe()
+table_3 = blood_df_train[blood_df_train['Class']==2].describe()
+```
+
+``` r
 print('Table 1:')
 ```
 
-    ## Table 1:
+    ## [1] "Table 1:"
 
-``` python
-blood_df_train.describe()
+``` r
+py$table_1 %>%
+  kable() %>%
+  kable_styling()
 ```
 
-    ##        since_last_don  total_dons   total_blood  since_first_don       Class
-    ## count      598.000000  598.000000    598.000000       598.000000  598.000000
-    ## mean         9.951505    5.653846   1413.461538        35.030100    1.230769
-    ## std          8.399130    5.939018   1484.754538        24.345691    0.421678
-    ## min          0.000000    1.000000    250.000000         2.000000    1.000000
-    ## 25%          4.000000    2.000000    500.000000        16.000000    1.000000
-    ## 50%          9.000000    4.000000   1000.000000        28.000000    1.000000
-    ## 75%         14.750000    7.000000   1750.000000        50.750000    1.000000
-    ## max         74.000000   50.000000  12500.000000        98.000000    2.000000
+<table class="table" style="margin-left: auto; margin-right: auto;">
 
-``` python
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+</th>
+
+<th style="text-align:right;">
+
+since\_last\_don
+
+</th>
+
+<th style="text-align:right;">
+
+total\_dons
+
+</th>
+
+<th style="text-align:right;">
+
+total\_blood
+
+</th>
+
+<th style="text-align:right;">
+
+since\_first\_don
+
+</th>
+
+<th style="text-align:right;">
+
+Class
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+count
+
+</td>
+
+<td style="text-align:right;">
+
+598.000000
+
+</td>
+
+<td style="text-align:right;">
+
+598.000000
+
+</td>
+
+<td style="text-align:right;">
+
+598.000
+
+</td>
+
+<td style="text-align:right;">
+
+598.00000
+
+</td>
+
+<td style="text-align:right;">
+
+598.0000000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+mean
+
+</td>
+
+<td style="text-align:right;">
+
+9.951505
+
+</td>
+
+<td style="text-align:right;">
+
+5.653846
+
+</td>
+
+<td style="text-align:right;">
+
+1413.462
+
+</td>
+
+<td style="text-align:right;">
+
+35.03010
+
+</td>
+
+<td style="text-align:right;">
+
+1.2307692
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+std
+
+</td>
+
+<td style="text-align:right;">
+
+8.399130
+
+</td>
+
+<td style="text-align:right;">
+
+5.939018
+
+</td>
+
+<td style="text-align:right;">
+
+1484.755
+
+</td>
+
+<td style="text-align:right;">
+
+24.34569
+
+</td>
+
+<td style="text-align:right;">
+
+0.4216778
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+min
+
+</td>
+
+<td style="text-align:right;">
+
+0.000000
+
+</td>
+
+<td style="text-align:right;">
+
+1.000000
+
+</td>
+
+<td style="text-align:right;">
+
+250.000
+
+</td>
+
+<td style="text-align:right;">
+
+2.00000
+
+</td>
+
+<td style="text-align:right;">
+
+1.0000000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+25%
+
+</td>
+
+<td style="text-align:right;">
+
+4.000000
+
+</td>
+
+<td style="text-align:right;">
+
+2.000000
+
+</td>
+
+<td style="text-align:right;">
+
+500.000
+
+</td>
+
+<td style="text-align:right;">
+
+16.00000
+
+</td>
+
+<td style="text-align:right;">
+
+1.0000000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+50%
+
+</td>
+
+<td style="text-align:right;">
+
+9.000000
+
+</td>
+
+<td style="text-align:right;">
+
+4.000000
+
+</td>
+
+<td style="text-align:right;">
+
+1000.000
+
+</td>
+
+<td style="text-align:right;">
+
+28.00000
+
+</td>
+
+<td style="text-align:right;">
+
+1.0000000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+75%
+
+</td>
+
+<td style="text-align:right;">
+
+14.750000
+
+</td>
+
+<td style="text-align:right;">
+
+7.000000
+
+</td>
+
+<td style="text-align:right;">
+
+1750.000
+
+</td>
+
+<td style="text-align:right;">
+
+50.75000
+
+</td>
+
+<td style="text-align:right;">
+
+1.0000000
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+max
+
+</td>
+
+<td style="text-align:right;">
+
+74.000000
+
+</td>
+
+<td style="text-align:right;">
+
+50.000000
+
+</td>
+
+<td style="text-align:right;">
+
+12500.000
+
+</td>
+
+<td style="text-align:right;">
+
+98.00000
+
+</td>
+
+<td style="text-align:right;">
+
+2.0000000
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+``` r
 print('Table 2:')
 ```
 
-    ## Table 2:
+    ## [1] "Table 2:"
 
-``` python
-blood_df_train[blood_df_train['Class']==1].describe()
+``` r
+py$table_2 %>%
+  kable() %>%
+  kable_styling()
 ```
 
-    ##        since_last_don  total_dons   total_blood  since_first_don  Class
-    ## count      460.000000  460.000000    460.000000       460.000000  460.0
-    ## mean        11.315217    4.969565   1242.391304        36.121739    1.0
-    ## std          8.699697    4.908215   1227.053762        24.566267    0.0
-    ## min          0.000000    1.000000    250.000000         2.000000    1.0
-    ## 25%          4.000000    2.000000    500.000000        16.000000    1.0
-    ## 50%         11.000000    3.000000    750.000000        28.000000    1.0
-    ## 75%         16.000000    7.000000   1750.000000        52.000000    1.0
-    ## max         74.000000   44.000000  11000.000000        98.000000    1.0
+<table class="table" style="margin-left: auto; margin-right: auto;">
 
-``` python
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+</th>
+
+<th style="text-align:right;">
+
+since\_last\_don
+
+</th>
+
+<th style="text-align:right;">
+
+total\_dons
+
+</th>
+
+<th style="text-align:right;">
+
+total\_blood
+
+</th>
+
+<th style="text-align:right;">
+
+since\_first\_don
+
+</th>
+
+<th style="text-align:right;">
+
+Class
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+count
+
+</td>
+
+<td style="text-align:right;">
+
+460.000000
+
+</td>
+
+<td style="text-align:right;">
+
+460.000000
+
+</td>
+
+<td style="text-align:right;">
+
+460.000
+
+</td>
+
+<td style="text-align:right;">
+
+460.00000
+
+</td>
+
+<td style="text-align:right;">
+
+460
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+mean
+
+</td>
+
+<td style="text-align:right;">
+
+11.315217
+
+</td>
+
+<td style="text-align:right;">
+
+4.969565
+
+</td>
+
+<td style="text-align:right;">
+
+1242.391
+
+</td>
+
+<td style="text-align:right;">
+
+36.12174
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+std
+
+</td>
+
+<td style="text-align:right;">
+
+8.699697
+
+</td>
+
+<td style="text-align:right;">
+
+4.908215
+
+</td>
+
+<td style="text-align:right;">
+
+1227.054
+
+</td>
+
+<td style="text-align:right;">
+
+24.56627
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+min
+
+</td>
+
+<td style="text-align:right;">
+
+0.000000
+
+</td>
+
+<td style="text-align:right;">
+
+1.000000
+
+</td>
+
+<td style="text-align:right;">
+
+250.000
+
+</td>
+
+<td style="text-align:right;">
+
+2.00000
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+25%
+
+</td>
+
+<td style="text-align:right;">
+
+4.000000
+
+</td>
+
+<td style="text-align:right;">
+
+2.000000
+
+</td>
+
+<td style="text-align:right;">
+
+500.000
+
+</td>
+
+<td style="text-align:right;">
+
+16.00000
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+50%
+
+</td>
+
+<td style="text-align:right;">
+
+11.000000
+
+</td>
+
+<td style="text-align:right;">
+
+3.000000
+
+</td>
+
+<td style="text-align:right;">
+
+750.000
+
+</td>
+
+<td style="text-align:right;">
+
+28.00000
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+75%
+
+</td>
+
+<td style="text-align:right;">
+
+16.000000
+
+</td>
+
+<td style="text-align:right;">
+
+7.000000
+
+</td>
+
+<td style="text-align:right;">
+
+1750.000
+
+</td>
+
+<td style="text-align:right;">
+
+52.00000
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+max
+
+</td>
+
+<td style="text-align:right;">
+
+74.000000
+
+</td>
+
+<td style="text-align:right;">
+
+44.000000
+
+</td>
+
+<td style="text-align:right;">
+
+11000.000
+
+</td>
+
+<td style="text-align:right;">
+
+98.00000
+
+</td>
+
+<td style="text-align:right;">
+
+1
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+``` r
 print('Table 3:')
 ```
 
-    ## Table 3:
+    ## [1] "Table 3:"
 
-``` python
-blood_df_train[blood_df_train['Class']==2].describe()
+``` r
+py$table_3 %>%
+  kable() %>%
+  kable_styling()
 ```
 
-    ##        since_last_don  total_dons   total_blood  since_first_don  Class
-    ## count      138.000000  138.000000    138.000000       138.000000  138.0
-    ## mean         5.405797    7.934783   1983.695652        31.391304    2.0
-    ## std          5.175233    8.134998   2033.749576        23.314240    0.0
-    ## min          0.000000    1.000000    250.000000         2.000000    2.0
-    ## 25%          2.000000    3.000000    750.000000        15.000000    2.0
-    ## 50%          4.000000    6.000000   1500.000000        28.000000    2.0
-    ## 75%          4.000000   10.000000   2500.000000        41.750000    2.0
-    ## max         26.000000   50.000000  12500.000000        98.000000    2.0
+<table class="table" style="margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+</th>
+
+<th style="text-align:right;">
+
+since\_last\_don
+
+</th>
+
+<th style="text-align:right;">
+
+total\_dons
+
+</th>
+
+<th style="text-align:right;">
+
+total\_blood
+
+</th>
+
+<th style="text-align:right;">
+
+since\_first\_don
+
+</th>
+
+<th style="text-align:right;">
+
+Class
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+count
+
+</td>
+
+<td style="text-align:right;">
+
+138.000000
+
+</td>
+
+<td style="text-align:right;">
+
+138.000000
+
+</td>
+
+<td style="text-align:right;">
+
+138.000
+
+</td>
+
+<td style="text-align:right;">
+
+138.00000
+
+</td>
+
+<td style="text-align:right;">
+
+138
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+mean
+
+</td>
+
+<td style="text-align:right;">
+
+5.405797
+
+</td>
+
+<td style="text-align:right;">
+
+7.934783
+
+</td>
+
+<td style="text-align:right;">
+
+1983.696
+
+</td>
+
+<td style="text-align:right;">
+
+31.39130
+
+</td>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+std
+
+</td>
+
+<td style="text-align:right;">
+
+5.175232
+
+</td>
+
+<td style="text-align:right;">
+
+8.134998
+
+</td>
+
+<td style="text-align:right;">
+
+2033.750
+
+</td>
+
+<td style="text-align:right;">
+
+23.31424
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+min
+
+</td>
+
+<td style="text-align:right;">
+
+0.000000
+
+</td>
+
+<td style="text-align:right;">
+
+1.000000
+
+</td>
+
+<td style="text-align:right;">
+
+250.000
+
+</td>
+
+<td style="text-align:right;">
+
+2.00000
+
+</td>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+25%
+
+</td>
+
+<td style="text-align:right;">
+
+2.000000
+
+</td>
+
+<td style="text-align:right;">
+
+3.000000
+
+</td>
+
+<td style="text-align:right;">
+
+750.000
+
+</td>
+
+<td style="text-align:right;">
+
+15.00000
+
+</td>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+50%
+
+</td>
+
+<td style="text-align:right;">
+
+4.000000
+
+</td>
+
+<td style="text-align:right;">
+
+6.000000
+
+</td>
+
+<td style="text-align:right;">
+
+1500.000
+
+</td>
+
+<td style="text-align:right;">
+
+28.00000
+
+</td>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+75%
+
+</td>
+
+<td style="text-align:right;">
+
+4.000000
+
+</td>
+
+<td style="text-align:right;">
+
+10.000000
+
+</td>
+
+<td style="text-align:right;">
+
+2500.000
+
+</td>
+
+<td style="text-align:right;">
+
+41.75000
+
+</td>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+max
+
+</td>
+
+<td style="text-align:right;">
+
+26.000000
+
+</td>
+
+<td style="text-align:right;">
+
+50.000000
+
+</td>
+
+<td style="text-align:right;">
+
+12500.000
+
+</td>
+
+<td style="text-align:right;">
+
+98.00000
+
+</td>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 In addition to the tables we also created visualizations to help us
 understand the distribution of the data. Though not included in this
@@ -117,23 +1207,21 @@ exponential distribution. This carried through to figures 1, 2, and 3
 seen below where we chose to separate features based on class. The only
 feature we did not create a figure for was total donations. This is
 because total blood donations and total amount of blood donated had
-almost identical results graphically. For all features plotted, both
-classes had an exponential distribution and followed the same trend.
-This indicated that these features may not be particularity strong in
-binary classification, even though the data represented a binary
-classification problem.
+almost identical results graphically. Figure 1 shows that the density of
+the time since the first blood donation for both individuals that
+donated and did not donate was very similar. Based on this observation
+it is likley that time since first donation wouldn’t be a strong
+differentiating feature. In constrast, figure 2 showed that the time
+since the last donation could be a decent predictor, since the number of
+individuals who ended up donating had often donated quite recently,
+indicating they are probably a frequent donor. Figure 3 indicated that
+there is likley a small predictive power for total blood donation, since
+those individuals that had not donated recently had actually donated
+more blood in general.
 
-### Figure 1.
-
-![](../results/since_first_don.png)
-
-### Figure 2.
-
-![](../results/since_last_don.png)
-
-### Figure 3.
-
-![](../results/total_blood.png)
+|              Figure 1               |              Figure 2              | Figure 3                        |
+| :---------------------------------: | :--------------------------------: | :------------------------------ |
+| ![](../results/since_first_don.png) | ![](../results/since_last_don.png) | ![](../results/total_blood.png) |
 
 ## Methods
 
@@ -153,44 +1241,331 @@ GridCV search to tune for the best hyperparameters of each model with
 ## Results
 
 ``` python
+results = pd.read_csv('../results/analysis_result.csv', names=["Info", "Scores"])
+rndm_frst = results.loc[5,'Scores']
+lgst_rgrsn = results.loc[16,'Scores']
+```
+
+``` r
 print('Table 4:')
 ```
 
-    ## Table 4:
+    ## [1] "Table 4:"
 
-``` python
-results = pd.read_csv('../results/analysis_result.csv')
-rndm_frst = results.loc[4,'Random Forest']
-lgst_rgrsn = results.loc[15,'Random Forest']
-results
+``` r
+py$results %>%
+  kable() %>%
+  kable_styling()
 ```
 
-    ##                     method          Random Forest
-    ## 0           Best_max_depth                    [4]
-    ## 1   Best_min_samples_split                    [2]
-    ## 2            Best_CV_Score   [0.6954545454545454]
-    ## 3           Training_Error   [0.2090909090909091]
-    ## 4         Validation_Error   [0.3035714285714286]
-    ## 5                   method          Decision Tree
-    ## 6           Best_max_depth                    [7]
-    ## 7    Bestmin_samples_split                    [4]
-    ## 8            Best_CV_Score   [0.6590909090909091]
-    ## 9           Training_Error  [0.15000000000000002]
-    ## 10        Validation_Error   [0.3571428571428571]
-    ## 11                  method    Logistic regression
-    ## 12                       C                    [1]
-    ## 13           Best_CV_Score   [0.7090909090909091]
-    ## 14          Training_Error   [0.2727272727272727]
-    ## 15        Validation_Error   [0.3214285714285714]
+<table class="table" style="margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Info
+
+</th>
+
+<th style="text-align:left;">
+
+Scores
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+method
+
+</td>
+
+<td style="text-align:left;">
+
+Random Forest
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Best\_max\_depth
+
+</td>
+
+<td style="text-align:left;">
+
+\[4\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Best\_min\_samples\_split
+
+</td>
+
+<td style="text-align:left;">
+
+\[2\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Best\_CV\_Score
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.6954545454545454\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Training\_Error
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.2090909090909091\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Validation\_Error
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.3035714285714286\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+method
+
+</td>
+
+<td style="text-align:left;">
+
+Decision Tree
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Best\_max\_depth
+
+</td>
+
+<td style="text-align:left;">
+
+\[7\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Bestmin\_samples\_split
+
+</td>
+
+<td style="text-align:left;">
+
+\[4\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Best\_CV\_Score
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.6590909090909091\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Training\_Error
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.15000000000000002\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Validation\_Error
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.3571428571428571\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+method
+
+</td>
+
+<td style="text-align:left;">
+
+Logistic regression
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+C
+
+</td>
+
+<td style="text-align:left;">
+
+\[1\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Best\_CV\_Score
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.7090909090909091\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Training\_Error
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.2727272727272727\]
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Validation\_Error
+
+</td>
+
+<td style="text-align:left;">
+
+\[0.3214285714285714\]
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 In table 4 we show the results for all three models, including the best
-hyperparameters and the train and valdation errors. The depending on
-random influence, either the Random Forest model at
-\[0.3035714285714286\] or the Logistic Regression model at
-\[0.3214285714285714\] had the best validation error. However, the
-Logistic Regression model was significantly less overfit than the Random
-Forest model since the difference between train and validation error was
-much smaller than the difference in the Random Forest model.
+hyperparameters and the train and validation errors. With our random
+seed, either the Random Forest model at \[0.3035714285714286\] had a
+better validation error than the Logistic Regression model at
+\[0.3214285714285714\]. However, the Logistic Regression model was
+significantly less overfit than the Random Forest model since the
+difference between train and validation error was much smaller than the
+difference in the Random Forest model.
 
 ## Discussion
 
@@ -198,19 +1573,21 @@ Based on our results we infer that the features of 1) time since last
 donation, 2) total number of donations, 3) total blood donated, and 4)
 the time since the first donation, all combined have some predictive
 power for whether a patient will donate blood. However, even with
-training three models, the best train and test accuracy scores were low,
-with an accuracy score of 0.5 being equivalent to random, the best score
-of the best model isn’t much better than random in terms of strength of
-predictive power. If a model was to be used to predict blood donation
-based on these features we would recommend a logistic regression
-classifier since the difference between train and validation error is
-much less than the Random Forest model, and therefore it would be a
-better model for generalization. However, since the predictive power for
-these features is so low, regarless of the model, we wouldn’t recommend
-using these features for predicting blood donation. We would suggest
-that more reasearch need to be conducted to identify other features may
-provide better predictions as to whether blood is donated by a past
-donor.
+training three models and optimizing their respective hyperparameters,
+the best train and test accuracy scores were low. With an accuracy score
+of 0.5 being equivalent to random, the best score of the Random Forest
+model at \[0.3035714285714286\] isn’t much better than random in terms
+of strength of predictive power. If a model was to be used to predict
+blood donation based on these features we would recommend a Logistic
+Regression classifier, even though it had a higher validation error than
+the Random Forest. This is because the difference between train and
+validation error is much less than the Random Forest model, and
+therefore it would be a better model for generalization. However, since
+the predictive power for these features is so low, regarless of the
+model, we wouldn’t recommend using these features for predicting blood
+donation. We would suggest that more reasearch need to be conducted to
+identify other features may provide better predictions as to whether
+blood is donated by a past donor.
 
 ## Conclusion
 

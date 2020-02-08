@@ -3,14 +3,13 @@ title: "Blood Donation Predictors Report"
 author: "Group 305"
 date: "24/01/2020"
 output: github_document
+always_allow_html: true
 ---
 
 ```{r}
-library(rmarkdown)
-library(markdown)
-library(knitr)
 library(reticulate)
 os <- import("os")
+library(kableExtra)
 ```
 
 
@@ -25,34 +24,39 @@ Before creating any models or statistical tests we conducted a preliminary explo
 ```{python}
 import pandas as pd
 blood_df_train = pd.read_csv('../data/processed/train_data.csv').drop('Unnamed: 0', axis = 1)
+table_1 = blood_df_train.describe()
+table_2 = blood_df_train[blood_df_train['Class']==1].describe()
+table_3 = blood_df_train[blood_df_train['Class']==2].describe()
+```
+
+```{r}
 print('Table 1:')
-blood_df_train.describe()
+py$table_1 %>%
+  kable() %>%
+  kable_styling()
 ```
 
-
-```{python}
+```{r}
 print('Table 2:')
-blood_df_train[blood_df_train['Class']==1].describe()
+py$table_2 %>%
+  kable() %>%
+  kable_styling()
 ```
 
-```{python}
+```{r}
 print('Table 3:')
-blood_df_train[blood_df_train['Class']==2].describe()
+py$table_3 %>%
+  kable() %>%
+  kable_styling()
 ```
 
-In addition to the tables we also created visualizations to help us understand the distribution of the data. Though not included in this report, in the EDA.ipynb file we looked at all observations together, regardless of whether the observation indicated donated or not donated. Through our plots we observed that almost all features had an exponential distribution. This carried through to figures 1, 2, and 3 seen below where we chose to separate features based on class. The only feature we did not create a figure for was total donations. This is because total blood donations and total amount of blood donated had almost identical results graphically. For all features plotted, both classes had an exponential distribution and followed the same trend. This indicated that these features may not be particularity strong in binary classification, even though the data represented a binary classification problem. 
+In addition to the tables we also created visualizations to help us understand the distribution of the data. Though not included in this report, in the EDA.ipynb file we looked at all observations together, regardless of whether the observation indicated donated or not donated. Through our plots we observed that almost all features had an exponential distribution. This carried through to figures 1, 2, and 3 seen below where we chose to separate features based on class. The only feature we did not create a figure for was total donations. This is because total blood donations and total amount of blood donated had almost identical results graphically. Figure 1 shows that the density of the time since the first blood donation for both individuals that donated and did not donate was very similar. Based on this observation it is likley that time since first donation wouldn't be a strong differentiating feature. In constrast, figure 2 showed that the time since the last donation could be a decent predictor, since the number of individuals who ended up donating had often donated quite recently, indicating they are probably a frequent donor. Figure 3 indicated that there is likley a small predictive power for total blood donation, since those individuals that had not donated recently had actually donated more blood in general. 
 
-### Figure 1.
 
-![](../results/since_first_don.png)
+Figure 1                   |  Figure 2                 |    Figure 3         
+:-------------------------:|:-------------------------:|:--------------- 
+![](../results/since_first_don.png) | ![](../results/since_last_don.png) | ![](../results/total_blood.png) 
 
-### Figure 2.
-
-![](../results/since_last_don.png)
-
-### Figure 3.
-
-![](../results/total_blood.png)
 
 
 ## Methods
@@ -62,19 +66,25 @@ To address our research question of whether our features could be used as predic
 ## Results 
 
 ```{python}
-print('Table 4:')
-results = pd.read_csv('../results/analysis_result.csv')
-rndm_frst = results.loc[4,'Random Forest']
-lgst_rgrsn = results.loc[15,'Random Forest']
-results
+results = pd.read_csv('../results/analysis_result.csv', names=["Info", "Scores"])
+rndm_frst = results.loc[5,'Scores']
+lgst_rgrsn = results.loc[16,'Scores']
 ```
 
-In table 4 we show the results for all three models, including the best hyperparameters and the train and valdation errors. The depending on random influence, either the Random Forest model at `r py$rndm_frst` or the Logistic Regression model at `r py$lgst_rgrsn` had the best validation error. However, the Logistic Regression model was significantly less overfit than the Random Forest model since the difference between train and validation error was much smaller than the difference in the Random Forest model.  
+```{r}
+print('Table 4:')
+py$results %>%
+  kable() %>%
+  kable_styling()
+```
+
+
+In table 4 we show the results for all three models, including the best hyperparameters and the train and validation errors. With our random seed, either the Random Forest model at `r py$rndm_frst` had a better validation error than the Logistic Regression model at `r py$lgst_rgrsn`. However, the Logistic Regression model was significantly less overfit than the Random Forest model since the difference between train and validation error was much smaller than the difference in the Random Forest model.  
 
 
 ## Discussion
 
-Based on our results we infer that the features of 1) time since last donation, 2) total number of donations, 3) total blood donated, and 4) the time since the first donation, all combined have some predictive power for whether a patient will donate blood. However, even with training three models, the best train and test accuracy scores were low, with an accuracy score of 0.5 being equivalent to random, the best score of the best model isn't much better than random in terms of strength of predictive power. If a model was to be used to predict blood donation based on these features we would recommend a logistic regression classifier since the difference between train and validation error is much less than the Random Forest model, and therefore it would be a better model for generalization. However, since the predictive power for these features is so low, regarless of the model, we wouldn’t recommend using these features for predicting blood donation. We would suggest that more reasearch need to be conducted to identify other features may provide better predictions as to whether blood is donated by a past donor. 
+Based on our results we infer that the features of 1) time since last donation, 2) total number of donations, 3) total blood donated, and 4) the time since the first donation, all combined have some predictive power for whether a patient will donate blood. However, even with training three models and optimizing their respective hyperparameters, the best train and test accuracy scores were low. With an accuracy score of 0.5 being equivalent to random, the best score of the Random Forest model at `r py$rndm_frst` isn't much better than random in terms of strength of predictive power. If a model was to be used to predict blood donation based on these features we would recommend a Logistic Regression classifier, even though it had a higher validation error than the Random Forest. This is because the difference between train and validation error is much less than the Random Forest model, and therefore it would be a better model for generalization. However, since the predictive power for these features is so low, regarless of the model, we wouldn’t recommend using these features for predicting blood donation. We would suggest that more reasearch need to be conducted to identify other features may provide better predictions as to whether blood is donated by a past donor. 
 
 ## Conclusion
 

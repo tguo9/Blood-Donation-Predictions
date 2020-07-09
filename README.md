@@ -1,4 +1,4 @@
-# mds522_305: Blood Donation Predictions
+# Blood Donation Predictions
 * Contributors: 
   - Evelyn Moorhouse
   - Tao Guo
